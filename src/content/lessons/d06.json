@@ -1,0 +1,83 @@
+{
+  "id": "d06",
+  "kind": "dialogue",
+  "title": "Mi familia",
+  "subtitle": "Talking about your family",
+  "scene": "{mom} asks about your family. Your details here are samples: change them to fit your real family.",
+  "lines": [
+    {
+      "id": "d06-01",
+      "who": "mom",
+      "es": "{me}, cuéntame de tu familia.",
+      "en": "{me}, tell me about your family.",
+      "reg": "tu",
+      "to": "you",
+      "note": "Cuéntame = tell me (tú). Cuéntame más = tell me more."
+    },
+    {
+      "id": "d06-02",
+      "who": "me",
+      "es": "Mi familia es pequeña.",
+      "en": "My family is small.",
+      "reg": "usted",
+      "to": "{mom}",
+      "note": "Sample detail. Grande = big, pequeña = small."
+    },
+    {
+      "id": "d06-03",
+      "who": "me",
+      "es": "Tengo una hermana y un hermano.",
+      "en": "I have a sister and a brother.",
+      "note": "Sample detail: make it yours. Un hermano, dos hermanas, no tengo hermanos."
+    },
+    {
+      "id": "d06-04",
+      "who": "mom",
+      "es": "¿Y dónde viven tus papás?",
+      "en": "And where do your parents live?",
+      "reg": "tu",
+      "to": "you",
+      "note": "Papás = parents (mom and dad) in Mexico."
+    },
+    {
+      "id": "d06-05",
+      "who": "me",
+      "es": "Viven cerca de mí. Los visito mucho.",
+      "en": "They live near me. I visit them a lot.",
+      "note": "Sample detail."
+    },
+    {
+      "id": "d06-06",
+      "who": "dad",
+      "es": "Qué bueno. La familia es lo más importante.",
+      "en": "That’s great. Family is the most important thing.",
+      "culture": {
+        "title": "La familia",
+        "text": "Family is the center of life in Mexico. Asking about someone’s family, and remembering names, builds trust fast."
+      }
+    },
+    {
+      "id": "d06-07",
+      "who": "me",
+      "es": "Sí, estoy de acuerdo.",
+      "en": "Yes, I agree.",
+      "reg": "usted",
+      "to": "{dad}",
+      "note": "Estoy de acuerdo = I agree. Useful at any table."
+    },
+    {
+      "id": "d06-08",
+      "who": "mom",
+      "es": "Algún día queremos conocerlos.",
+      "en": "Someday we want to meet them."
+    },
+    {
+      "id": "d06-09",
+      "who": "me",
+      "es": "¡Claro que sí! Ellos también quieren conocerlos a ustedes.",
+      "en": "Of course! They want to meet you too.",
+      "reg": "ustedes",
+      "to": "both"
+    }
+  ]
+}

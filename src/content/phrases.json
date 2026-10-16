@@ -1,0 +1,189 @@
+[
+  { "id": "p01", "category": "saludos", "es": "Buenos días.", "en": "Good morning." },
+  {
+    "id": "p02",
+    "category": "saludos",
+    "es": "Buenas tardes.",
+    "en": "Good afternoon.",
+    "note": "From about noon until it gets dark."
+  },
+  {
+    "id": "p03",
+    "category": "saludos",
+    "es": "Buenas noches.",
+    "en": "Good evening. / Good night.",
+    "note": "After dark, both when you arrive and when you leave."
+  },
+  { "id": "p04", "category": "saludos", "es": "Mucho gusto.", "en": "Nice to meet you." },
+  {
+    "id": "p05",
+    "category": "saludos",
+    "es": "Encantado.",
+    "en": "Delighted (to meet you).",
+    "note": "Your form, {me}. Women say encantada."
+  },
+  {
+    "id": "p06",
+    "category": "saludos",
+    "es": "¿Cómo está usted?",
+    "en": "How are you?",
+    "reg": "usted",
+    "note": "For {mom}, {dad} and grandparents."
+  },
+  {
+    "id": "p07",
+    "category": "saludos",
+    "es": "¿Cómo estás?",
+    "en": "How are you?",
+    "reg": "tu",
+    "note": "For {sibling}, cousins and kids."
+  },
+  {
+    "id": "p08",
+    "category": "saludos",
+    "es": "Muy bien, gracias. ¿Y usted?",
+    "en": "Very well, thanks. And you?",
+    "reg": "usted"
+  },
+  {
+    "id": "p09",
+    "category": "saludos",
+    "es": "¿Qué onda?",
+    "en": "What’s up?",
+    "reg": "tu",
+    "note": "Very casual. Only with people your age."
+  },
+
+  {
+    "id": "p10",
+    "category": "respeto",
+    "es": "Con permiso.",
+    "en": "Excuse me.",
+    "note": "When you get up from the table or walk past someone."
+  },
+  { "id": "p11", "category": "respeto", "es": "Perdón.", "en": "Sorry. / Excuse me." },
+  { "id": "p12", "category": "respeto", "es": "Por favor.", "en": "Please." },
+  { "id": "p13", "category": "respeto", "es": "Sí, señora.", "en": "Yes, ma’am." },
+  {
+    "id": "p14",
+    "category": "respeto",
+    "es": "¿Le ayudo con algo?",
+    "en": "Can I help you with anything?",
+    "reg": "usted"
+  },
+  {
+    "id": "p15",
+    "category": "respeto",
+    "es": "Siéntese, por favor.",
+    "en": "Please, have a seat.",
+    "reg": "usted",
+    "note": "Offer your seat to elders."
+  },
+  {
+    "id": "p16",
+    "category": "respeto",
+    "es": "Pásele.",
+    "en": "Come in. / Go ahead.",
+    "reg": "usted",
+    "note": "The usted form of pásale."
+  },
+
+  { "id": "p17", "category": "comida", "es": "¡Buen provecho!", "en": "Enjoy your meal!" },
+  { "id": "p18", "category": "comida", "es": "¡Qué rico!", "en": "So good! / Yum!" },
+  { "id": "p19", "category": "comida", "es": "Está delicioso.", "en": "It’s delicious." },
+  { "id": "p20", "category": "comida", "es": "Está riquísimo.", "en": "It’s really delicious." },
+  { "id": "p21", "category": "comida", "es": "Sí, por favor. Un poquito más.", "en": "Yes, please. A little more." },
+  {
+    "id": "p22",
+    "category": "comida",
+    "es": "Estoy satisfecho, gracias.",
+    "en": "I’m full, thanks.",
+    "note": "Your form, {me}. Women say satisfecha."
+  },
+  {
+    "id": "p23",
+    "category": "comida",
+    "es": "¿Me pasa la sal, por favor?",
+    "en": "Could you pass me the salt, please?",
+    "reg": "usted"
+  },
+  { "id": "p24", "category": "comida", "es": "Me gusta mucho.", "en": "I like it a lot." },
+  { "id": "p25", "category": "comida", "es": "Poquito picante, por favor.", "en": "Just a little spicy, please." },
+
+  { "id": "p26", "category": "trabajo", "es": "Trabajo en un banco.", "en": "I work at a bank." },
+  { "id": "p27", "category": "trabajo", "es": "Ayudo a los clientes.", "en": "I help the customers." },
+  { "id": "p28", "category": "trabajo", "es": "Me gusta mi trabajo.", "en": "I like my job." },
+  { "id": "p29", "category": "trabajo", "es": "Trabajo de lunes a viernes.", "en": "I work Monday to Friday." },
+  { "id": "p30", "category": "trabajo", "es": "¿A qué se dedica?", "en": "What do you do for work?", "reg": "usted" },
+
+  { "id": "p31", "category": "familia", "es": "{partner} es mi pareja.", "en": "{partner} is my partner." },
+  {
+    "id": "p32",
+    "category": "familia",
+    "es": "Mi familia es pequeña.",
+    "en": "My family is small.",
+    "note": "Sample: swap in grande if yours is big."
+  },
+  {
+    "id": "p33",
+    "category": "familia",
+    "es": "Tengo una hermana y un hermano.",
+    "en": "I have a sister and a brother.",
+    "note": "Sample: make it match your family."
+  },
+  {
+    "id": "p34",
+    "category": "familia",
+    "es": "Mis papás viven cerca.",
+    "en": "My parents live nearby.",
+    "note": "Sample: lejos = far away."
+  },
+  {
+    "id": "p35",
+    "category": "familia",
+    "es": "La familia es lo más importante.",
+    "en": "Family is the most important thing."
+  },
+  {
+    "id": "p36",
+    "category": "familia",
+    "es": "Su familia es muy bonita.",
+    "en": "Your family is lovely.",
+    "reg": "usted"
+  },
+
+  { "id": "p37", "category": "gracias", "es": "Muchas gracias.", "en": "Thank you very much." },
+  { "id": "p38", "category": "gracias", "es": "Gracias por todo.", "en": "Thank you for everything." },
+  { "id": "p39", "category": "gracias", "es": "Usted es muy amable.", "en": "You’re very kind.", "reg": "usted" },
+  {
+    "id": "p40",
+    "category": "gracias",
+    "es": "Ustedes son muy amables.",
+    "en": "You’re all very kind.",
+    "reg": "ustedes"
+  },
+  { "id": "p41", "category": "gracias", "es": "De nada.", "en": "You’re welcome." },
+
+  { "id": "p42", "category": "despedidas", "es": "Ya nos vamos.", "en": "We’re heading out now." },
+  { "id": "p43", "category": "despedidas", "es": "Hasta luego.", "en": "See you later." },
+  { "id": "p44", "category": "despedidas", "es": "Nos vemos.", "en": "See you." },
+  { "id": "p45", "category": "despedidas", "es": "Cuídese mucho.", "en": "Take good care.", "reg": "usted" },
+  { "id": "p46", "category": "despedidas", "es": "Que descansen.", "en": "Rest well, everyone.", "reg": "ustedes" },
+
+  { "id": "p47", "category": "ayuda", "es": "No entiendo.", "en": "I don’t understand." },
+  {
+    "id": "p48",
+    "category": "ayuda",
+    "es": "¿Puede hablar más despacio, por favor?",
+    "en": "Can you speak more slowly, please?",
+    "reg": "usted"
+  },
+  {
+    "id": "p49",
+    "category": "ayuda",
+    "es": "¿Me lo puede repetir, por favor?",
+    "en": "Can you repeat that for me, please?",
+    "reg": "usted"
+  },
+  { "id": "p50", "category": "ayuda", "es": "Estoy aprendiendo español.", "en": "I’m learning Spanish." }
+]

@@ -1,0 +1,11 @@
+import { lessons } from "@/content";
+import { Reader } from "./Reader";
+
+export function generateStaticParams() {
+  return lessons.map((l) => ({ id: l.id }));
+}
+
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  return <Reader id={id} />;
+}

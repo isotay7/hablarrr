@@ -1,0 +1,68 @@
+{
+  "id": "d08",
+  "kind": "dialogue",
+  "title": "La sobremesa",
+  "subtitle": "Coffee and conversation after dinner",
+  "scene": "The plates are empty, but nobody gets up. It’s time for la sobremesa.",
+  "lines": [
+    {
+      "id": "d08-01",
+      "who": "dad",
+      "es": "¿Un cafecito, {me}?",
+      "en": "A little coffee, {me}?",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d08-02",
+      "who": "me",
+      "es": "Sí, gracias. Con un poco de azúcar.",
+      "en": "Yes, thanks. With a little sugar.",
+      "reg": "usted",
+      "to": "{dad}"
+    },
+    {
+      "id": "d08-03",
+      "who": "mom",
+      "es": "También hay pan dulce.",
+      "en": "There’s also sweet bread.",
+      "note": "Pan dulce: Mexican sweet bread, like conchas. Perfect with coffee."
+    },
+    {
+      "id": "d08-04",
+      "who": "me",
+      "es": "¡Qué rico! Señora, ¿le ayudo con los platos?",
+      "en": "Yum! Ma’am, can I help you with the dishes?",
+      "reg": "usted",
+      "to": "{mom}",
+      "culture": {
+        "title": "La sobremesa",
+        "text": "After a meal, families stay at the table talking for a long time. Leaving right after eating can seem rude. Relax and listen."
+      }
+    },
+    {
+      "id": "d08-05",
+      "who": "mom",
+      "es": "No, no, siéntate. Tú eres nuestro invitado.",
+      "en": "No, no, sit down. You’re our guest.",
+      "reg": "tu",
+      "to": "you",
+      "note": "Invitado = guest (for a man)."
+    },
+    {
+      "id": "d08-06",
+      "who": "me",
+      "es": "Por favor, señora. Me gusta ayudar.",
+      "en": "Please, ma’am. I like to help.",
+      "reg": "usted",
+      "to": "{mom}"
+    },
+    { "id": "d08-07", "who": "mom", "es": "Bueno, está bien. ¡Gracias, {me}!", "en": "Okay, fine. Thanks, {me}!" },
+    {
+      "id": "d08-08",
+      "who": "dad",
+      "es": "{me} ya es parte de la familia.",
+      "en": "{me} is already part of the family."
+    }
+  ]
+}

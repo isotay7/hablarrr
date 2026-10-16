@@ -1,0 +1,86 @@
+{
+  "id": "d02",
+  "kind": "dialogue",
+  "title": "Estás en tu casa",
+  "subtitle": "Settling in before dinner",
+  "scene": "You’re inside. {mom} is finishing dinner and {dad} offers you a drink.",
+  "lines": [
+    {
+      "id": "d02-01",
+      "who": "mom",
+      "es": "Estás en tu casa, {me}.",
+      "en": "Make yourself at home, {me}.",
+      "reg": "tu",
+      "to": "you",
+      "culture": {
+        "title": "Mi casa es tu casa",
+        "text": "It’s a real welcome, not a cliché. Accept it warmly, but still ask before helping yourself to things."
+      }
+    },
+    {
+      "id": "d02-02",
+      "who": "me",
+      "es": "Muchas gracias. Su casa es muy bonita.",
+      "en": "Thank you so much. Your house is very pretty.",
+      "reg": "usted",
+      "to": "{mom}",
+      "note": "Su casa = your house (usted). With {sibling} it would be tu casa."
+    },
+    {
+      "id": "d02-03",
+      "who": "dad",
+      "es": "¿Quieres algo de tomar? ¿Un refresco? ¿Agua de jamaica?",
+      "en": "Do you want something to drink? A soda? Hibiscus water?",
+      "reg": "tu",
+      "to": "you",
+      "note": "In Mexico, tomar is the everyday verb for “to drink”."
+    },
+    {
+      "id": "d02-04",
+      "who": "me",
+      "es": "Un agua de jamaica, por favor.",
+      "en": "A hibiscus water, please.",
+      "reg": "usted",
+      "to": "{dad}",
+      "note": "Agua is feminine, but it takes un: un agua, el agua."
+    },
+    {
+      "id": "d02-05",
+      "who": "sibling",
+      "es": "Yo la traigo. ¡Mi mamá la hace muy rica!",
+      "en": "I’ll bring it. My mom makes it really good!",
+      "gloss": { "la": { "g": "it (the agua)", "n": "La replaces agua: yo la traigo = I’ll bring it." } },
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d02-06",
+      "who": "me",
+      "es": "Gracias, {sibling}. Eres muy amable.",
+      "en": "Thanks, {sibling}. You’re very kind.",
+      "reg": "tu",
+      "to": "{sibling}"
+    },
+    {
+      "id": "d02-07",
+      "who": "mom",
+      "es": "Siéntate, {me}. La cena está casi lista.",
+      "en": "Sit down, {me}. Dinner is almost ready.",
+      "reg": "tu",
+      "to": "you",
+      "note": "Siéntate = sit down (tú). To an elder you’d say siéntese."
+    },
+    {
+      "id": "d02-08",
+      "who": "me",
+      "es": "¿Le ayudo con algo, señora?",
+      "en": "Can I help you with anything, ma’am?",
+      "reg": "usted",
+      "to": "{mom}",
+      "culture": {
+        "title": "Ofrecer ayuda",
+        "text": "Offering to help is good manners, even if the answer is no. Hosts often say no the first time."
+      }
+    }
+  ]
+}

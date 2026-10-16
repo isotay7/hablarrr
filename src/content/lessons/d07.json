@@ -1,0 +1,70 @@
+{
+  "id": "d07",
+  "kind": "dialogue",
+  "title": "¿Qué onda, {sibling}?",
+  "subtitle": "Chatting with {sibling}",
+  "scene": "{sibling}, {partner}’s sibling, sits down next to you. With {sibling}, tú is perfect.",
+  "lines": [
+    {
+      "id": "d07-01",
+      "who": "sibling",
+      "es": "¿Qué onda, {me}? ¿Cómo estás?",
+      "en": "What’s up, {me}? How are you?",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d07-02",
+      "who": "me",
+      "es": "¡Todo bien! ¿Y tú?",
+      "en": "All good! And you?",
+      "reg": "tu",
+      "to": "{sibling}",
+      "note": "With siblings and cousins your age, use tú."
+    },
+    {
+      "id": "d07-03",
+      "who": "sibling",
+      "es": "Bien, bien. Oye, ¿te gusta la música?",
+      "en": "Good, good. Hey, do you like music?",
+      "reg": "tu",
+      "to": "you",
+      "note": "Oye = hey, listen (tú). Used to start a new topic."
+    },
+    {
+      "id": "d07-04",
+      "who": "me",
+      "es": "Sí, mucho. ¿Qué música te gusta?",
+      "en": "Yes, a lot. What music do you like?",
+      "reg": "tu",
+      "to": "{sibling}"
+    },
+    {
+      "id": "d07-05",
+      "who": "sibling",
+      "es": "Me encanta la cumbia. ¿Bailas?",
+      "en": "I love cumbia. Do you dance?",
+      "reg": "tu",
+      "to": "you"
+    },
+    { "id": "d07-06", "who": "me", "es": "Un poco… pero muy mal.", "en": "A little… but really badly." },
+    {
+      "id": "d07-07",
+      "who": "sibling",
+      "es": "¡No pasa nada! Yo te enseño.",
+      "en": "No worries! I’ll teach you.",
+      "reg": "tu",
+      "to": "you",
+      "note": "No pasa nada = no problem, it’s fine. Very common in Mexico."
+    },
+    {
+      "id": "d07-08",
+      "who": "me",
+      "es": "¡Órale! Va.",
+      "en": "Alright! Deal.",
+      "reg": "tu",
+      "to": "{sibling}",
+      "note": "¡Órale! and va are casual and very Mexican. Great with {sibling}, not with the parents."
+    }
+  ]
+}

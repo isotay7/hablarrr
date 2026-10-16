@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* Night (default): warm candlelight. */
+:root,
+[data-theme="night"] {
+  --bg: #1a1310;
+  --surface: #261c17;
+  --surface-2: #33261f;
+  --card: #211813;
+  --card-active: #2c211b;
+  --nav: #120d0a;
+  --text: #f6ebdd;
+  --muted: #bfa993;
+  --soft: #d9c7b3;
+  --line: rgba(246, 235, 221, 0.1);
+  --accent: #f2a93b;
+  --accent-ink: #2b1d15;
+  --accent-text: #f2a93b;
+  --terra: #b4532f;
+  --terra-soft: #d2694a;
+  --terra-text: #f0a58a;
+  --blue: #2f5da8;
+  --blue-soft: #4f7bc9;
+  --blue-text: #a9c2f0;
+  --learn-bg: rgba(242, 169, 59, 0.2);
+  --glow: rgba(242, 169, 59, 0.45);
+  --bubble: #33261f;
+  --note-bg: rgba(246, 235, 221, 0.06);
+  --candle: rgba(242, 169, 59, 0.18);
+  --shadow: rgba(0, 0, 0, 0.45);
+  --flag-opacity: 0.55;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #fbf4e8;
+  --surface: #f1e4cf;
+  --surface-2: #e9d8bd;
+  --card: #fffbf4;
+  --card-active: #fff1dc;
+  --nav: #f3e8d6;
+  --text: #2b1d15;
+  --muted: #6e5646;
+  --soft: #4e3a2e;
+  --line: rgba(43, 29, 21, 0.12);
+  --accent: #f2a93b;
+  --accent-ink: #2b1d15;
+  --accent-text: #a4501f;
+  --terra: #b4532f;
+  --terra-soft: #c75f3b;
+  --terra-text: #93401f;
+  --blue: #2f5da8;
+  --blue-soft: #3f6dbb;
+  --blue-text: #234a8c;
+  --learn-bg: rgba(242, 169, 59, 0.3);
+  --glow: rgba(214, 128, 20, 0.35);
+  --bubble: #ffffff;
+  --note-bg: rgba(43, 29, 21, 0.05);
+  --candle: rgba(242, 169, 59, 0.22);
+  --shadow: rgba(60, 35, 15, 0.18);
+  --flag-opacity: 0.8;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+  --color-card-active: var(--card-active);
+  --color-nav: var(--nav);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-soft: var(--soft);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-text: var(--accent-text);
+  --color-terra: var(--terra);
+  --color-terra-soft: var(--terra-soft);
+  --color-terra-text: var(--terra-text);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-blue-text: var(--blue-text);
+  --color-learn: var(--learn-bg);
+  --color-bubble: var(--bubble);
+  --color-note: var(--note-bg);
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+
+/* Tappable things should never trigger iOS text selection or callouts. */
+button,
+a,
+[role="button"] {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.pt-safe {
+  padding-top: max(env(safe-area-inset-top), 0px);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Papel picado flags sway gently. */
+.flag-sway {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: flag-sway 5s ease-in-out infinite;
+}
+@keyframes flag-sway {
+  0%,
+  100% {
+    transform: rotate(-2.5deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes candle {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.candle {
+  animation: candle 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flag-sway,
+  .candle {
+    animation: none;
+  }
+}

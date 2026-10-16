@@ -1,0 +1,77 @@
+{
+  "id": "s03",
+  "kind": "story",
+  "title": "El hijo pródigo",
+  "subtitle": "The prodigal son, retold simply",
+  "scene": "A retelling of Luke 15 in the present tense, with short sentences.",
+  "lines": [
+    { "id": "s03-01", "who": "narrador", "es": "Un padre tiene dos hijos.", "en": "A father has two sons." },
+    {
+      "id": "s03-02",
+      "who": "narrador",
+      "es": "El hijo menor quiere su dinero.",
+      "en": "The younger son wants his money."
+    },
+    {
+      "id": "s03-03",
+      "who": "narrador",
+      "es": "El padre está triste, pero le da el dinero.",
+      "en": "The father is sad, but he gives him the money."
+    },
+    {
+      "id": "s03-04",
+      "who": "narrador",
+      "es": "El hijo se va a un país lejano.",
+      "en": "The son goes away to a faraway country."
+    },
+    {
+      "id": "s03-05",
+      "who": "narrador",
+      "es": "Allí gasta todo su dinero en fiestas.",
+      "en": "There he spends all his money on parties."
+    },
+    {
+      "id": "s03-06",
+      "who": "narrador",
+      "es": "Ahora no tiene nada. Tiene mucha hambre.",
+      "en": "Now he has nothing. He is very hungry."
+    },
+    {
+      "id": "s03-07",
+      "who": "narrador",
+      "es": "Trabaja con cerdos, pero nadie le da comida.",
+      "en": "He works with pigs, but nobody gives him food."
+    },
+    {
+      "id": "s03-08",
+      "who": "narrador",
+      "es": "Un día, piensa: «Voy a regresar a la casa de mi padre».",
+      "en": "One day, he thinks: “I’m going to go back to my father’s house.”"
+    },
+    {
+      "id": "s03-09",
+      "who": "narrador",
+      "es": "El padre lo ve de lejos y corre hacia él.",
+      "en": "The father sees him from far away and runs to him."
+    },
+    { "id": "s03-10", "who": "narrador", "es": "Lo abraza y lo besa.", "en": "He hugs him and kisses him." },
+    {
+      "id": "s03-11",
+      "who": "narrador",
+      "es": "El hijo dice: «Padre, perdóname».",
+      "en": "The son says: “Father, forgive me.”"
+    },
+    {
+      "id": "s03-12",
+      "who": "narrador",
+      "es": "El padre está muy feliz. ¡Hay una gran fiesta!",
+      "en": "The father is very happy. There is a big party!"
+    },
+    {
+      "id": "s03-13",
+      "who": "narrador",
+      "es": "El padre dice: «Mi hijo está aquí otra vez».",
+      "en": "The father says: “My son is here again.”"
+    }
+  ]
+}

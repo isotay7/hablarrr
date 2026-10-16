@@ -1,0 +1,79 @@
+{
+  "id": "d03",
+  "kind": "dialogue",
+  "title": "A la mesa",
+  "subtitle": "Sitting down to dinner",
+  "scene": "Dinner is ready. Everyone gathers around the table.",
+  "lines": [
+    {
+      "id": "d03-01",
+      "who": "mom",
+      "es": "¡A comer! Todos a la mesa.",
+      "en": "Time to eat! Everyone to the table.",
+      "reg": "ustedes",
+      "to": "everyone"
+    },
+    {
+      "id": "d03-02",
+      "who": "dad",
+      "es": "{me}, siéntate aquí, junto a mí.",
+      "en": "{me}, sit here, next to me.",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d03-03",
+      "who": "me",
+      "es": "Con mucho gusto. Gracias.",
+      "en": "With pleasure. Thanks.",
+      "reg": "usted",
+      "to": "{dad}"
+    },
+    {
+      "id": "d03-04",
+      "who": "mom",
+      "es": "Hoy hay pozole y tostadas.",
+      "en": "Today there’s pozole and tostadas.",
+      "note": "Pozole: a hominy stew with pork or chicken, a favorite for family gatherings."
+    },
+    {
+      "id": "d03-05",
+      "who": "me",
+      "es": "¡Buen provecho!",
+      "en": "Enjoy your meal!",
+      "reg": "ustedes",
+      "to": "everyone",
+      "culture": {
+        "title": "Provecho",
+        "text": "Say “¡Provecho!” or “¡Buen provecho!” when the food is served, and even to strangers eating as you walk past. It’s very Mexican."
+      }
+    },
+    { "id": "d03-06", "who": "sibling", "es": "¡Provecho!", "en": "Enjoy!" },
+    {
+      "id": "d03-07",
+      "who": "dad",
+      "es": "¿Te gusta el picante, {me}?",
+      "en": "Do you like spicy food, {me}?",
+      "reg": "tu",
+      "to": "you",
+      "note": "Te gusta = you like (literally: it pleases you)."
+    },
+    {
+      "id": "d03-08",
+      "who": "me",
+      "es": "Sí, pero poquito, por favor.",
+      "en": "Yes, but just a little, please.",
+      "reg": "usted",
+      "to": "{dad}",
+      "note": "Mexicans love -ito endings: poquito = a tiny bit. It sounds friendly."
+    },
+    {
+      "id": "d03-09",
+      "who": "dad",
+      "es": "¡Ja, ja! Muy bien. Poquito.",
+      "en": "Ha ha! Very good. Just a little.",
+      "reg": "tu",
+      "to": "you"
+    }
+  ]
+}

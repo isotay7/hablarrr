@@ -1,0 +1,78 @@
+{
+  "id": "d01",
+  "kind": "dialogue",
+  "title": "Mucho gusto",
+  "subtitle": "Meeting {partner}’s parents",
+  "scene": "{partner} opens the door. {mom} and {dad} are waiting in the living room.",
+  "lines": [
+    {
+      "id": "d01-01",
+      "who": "partner",
+      "es": "Mamá, papá, él es {me}.",
+      "en": "Mom, Dad, this is {me}.",
+      "note": "Él es… = This is… (for a man). Introductions use the verb ser."
+    },
+    {
+      "id": "d01-02",
+      "who": "mom",
+      "es": "¡Hola, {me}! Por fin te conocemos.",
+      "en": "Hi, {me}! We finally get to meet you.",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d01-03",
+      "who": "me",
+      "es": "Mucho gusto, señora. Encantado.",
+      "en": "Nice to meet you, ma’am. Delighted.",
+      "reg": "usted",
+      "to": "{mom}",
+      "culture": {
+        "title": "Saludos",
+        "text": "Greet each person in the room, one by one: a handshake or a light kiss on the right cheek, plus a few words. Skipping someone can come across as cold."
+      }
+    },
+    {
+      "id": "d01-04",
+      "who": "dad",
+      "es": "Bienvenido, {me}. Yo soy {dad}.",
+      "en": "Welcome, {me}. I’m {dad}.",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d01-05",
+      "who": "me",
+      "es": "Mucho gusto, señor. ¿Cómo está usted?",
+      "en": "Nice to meet you, sir. How are you?",
+      "reg": "usted",
+      "to": "{dad}",
+      "note": "¿Cómo está? (usted) vs ¿Cómo estás? (tú). One letter shows respect."
+    },
+    {
+      "id": "d01-06",
+      "who": "dad",
+      "es": "Muy bien, gracias. ¿Y tú?",
+      "en": "Very well, thanks. And you?",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d01-07",
+      "who": "me",
+      "es": "Muy bien, gracias. {partner} habla mucho de ustedes.",
+      "en": "Very well, thanks. {partner} talks about you all a lot.",
+      "reg": "ustedes",
+      "to": "both",
+      "note": "Ustedes = you all. In Mexico it’s the only plural “you”, formal or casual."
+    },
+    {
+      "id": "d01-08",
+      "who": "mom",
+      "es": "¡Ay, qué lindo! Pásale, pásale.",
+      "en": "Aw, how sweet! Come in, come in.",
+      "reg": "tu",
+      "to": "you"
+    }
+  ]
+}

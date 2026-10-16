@@ -1,0 +1,74 @@
+{
+  "id": "d09",
+  "kind": "dialogue",
+  "title": "Con la abuela",
+  "subtitle": "Meeting grandma, and asking her to slow down",
+  "scene": "{partner}’s grandmother arrives. Use usted, and keep your survival phrases ready.",
+  "lines": [
+    {
+      "id": "d09-01",
+      "who": "abuela",
+      "es": "¿Y este muchacho quién es?",
+      "en": "And who is this young man?",
+      "note": "Grandparents often talk about you in front of you. Smile: it’s affectionate."
+    },
+    { "id": "d09-02", "who": "partner", "es": "Abuela, él es {me}, mi pareja.", "en": "Grandma, this is {me}, my partner." },
+    {
+      "id": "d09-03",
+      "who": "me",
+      "es": "Buenas noches, señora. Mucho gusto.",
+      "en": "Good evening, ma’am. Nice to meet you.",
+      "reg": "usted",
+      "to": "Abuela",
+      "culture": {
+        "title": "Respeto a los mayores",
+        "text": "Greet grandparents first and with extra respect: use usted, stand up when they arrive, and let them start eating first."
+      }
+    },
+    {
+      "id": "d09-04",
+      "who": "abuela",
+      "es": "Mucho gusto, mijo. ¿Hablas español?",
+      "en": "Nice to meet you, dear. Do you speak Spanish?",
+      "reg": "tu",
+      "to": "you",
+      "note": "Mijo (from mi hijo) = dear. Older Mexicans say it with love, even to people who aren’t their kids."
+    },
+    {
+      "id": "d09-05",
+      "who": "me",
+      "es": "Un poquito. Estoy aprendiendo.",
+      "en": "A little bit. I’m learning.",
+      "reg": "usted",
+      "to": "Abuela"
+    },
+    {
+      "id": "d09-06",
+      "who": "abuela",
+      "es": "Mi esposo y yo vivimos aquí desde hace cuarenta años.",
+      "en": "My husband and I have lived here for forty years."
+    },
+    {
+      "id": "d09-07",
+      "who": "me",
+      "es": "Perdón, no entiendo. ¿Puede hablar más despacio, por favor?",
+      "en": "Sorry, I don’t understand. Can you speak more slowly, please?",
+      "reg": "usted",
+      "to": "Abuela",
+      "note": "Your survival line. Puede = can you (usted). With {sibling}: ¿Puedes…?"
+    },
+    {
+      "id": "d09-08",
+      "who": "abuela",
+      "es": "Claro, mijo. Vivimos. Aquí. Cuarenta. Años.",
+      "en": "Of course, dear. We live. Here. Forty. Years."
+    },
+    {
+      "id": "d09-09",
+      "who": "me",
+      "es": "¡Ah, ya entiendo! Cuarenta años. ¡Qué bonito!",
+      "en": "Ah, now I get it! Forty years. How lovely!",
+      "note": "Ya entiendo = now I understand."
+    }
+  ]
+}

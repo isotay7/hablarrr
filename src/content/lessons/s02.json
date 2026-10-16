@@ -1,0 +1,67 @@
+{
+  "id": "s02",
+  "kind": "story",
+  "title": "Noé y el arca",
+  "subtitle": "Noah’s ark, retold simply",
+  "scene": "A retelling of Genesis 6–9 in the present tense, with short sentences.",
+  "lines": [
+    { "id": "s02-01", "who": "narrador", "es": "Noé es un hombre bueno.", "en": "Noah is a good man." },
+    { "id": "s02-02", "who": "narrador", "es": "Dios habla con Noé.", "en": "God speaks with Noah." },
+    {
+      "id": "s02-03",
+      "who": "narrador",
+      "es": "Dios dice: «Construye un arca muy grande».",
+      "en": "God says: “Build a very big ark.”"
+    },
+    {
+      "id": "s02-04",
+      "who": "narrador",
+      "es": "Noé y su familia trabajan mucho.",
+      "en": "Noah and his family work hard."
+    },
+    {
+      "id": "s02-05",
+      "who": "narrador",
+      "es": "Los animales llegan de dos en dos.",
+      "en": "The animals arrive two by two."
+    },
+    {
+      "id": "s02-06",
+      "who": "narrador",
+      "es": "Entran al arca: leones, elefantes, jirafas…",
+      "en": "They go into the ark: lions, elephants, giraffes…"
+    },
+    { "id": "s02-07", "who": "narrador", "es": "Empieza a llover.", "en": "It starts to rain." },
+    {
+      "id": "s02-08",
+      "who": "narrador",
+      "es": "Llueve cuarenta días y cuarenta noches.",
+      "en": "It rains forty days and forty nights."
+    },
+    {
+      "id": "s02-09",
+      "who": "narrador",
+      "es": "El agua cubre toda la tierra.",
+      "en": "The water covers all the land."
+    },
+    { "id": "s02-10", "who": "narrador", "es": "Por fin, la lluvia termina.", "en": "At last, the rain ends." },
+    {
+      "id": "s02-11",
+      "who": "narrador",
+      "es": "Noé manda una paloma. La paloma regresa con una rama de olivo.",
+      "en": "Noah sends out a dove. The dove comes back with an olive branch."
+    },
+    {
+      "id": "s02-12",
+      "who": "narrador",
+      "es": "Todos salen del arca. En el cielo hay un arcoíris.",
+      "en": "Everyone comes out of the ark. In the sky there is a rainbow."
+    },
+    {
+      "id": "s02-13",
+      "who": "narrador",
+      "es": "El arcoíris es una promesa de Dios.",
+      "en": "The rainbow is a promise from God."
+    }
+  ]
+}

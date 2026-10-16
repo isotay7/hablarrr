@@ -1,0 +1,76 @@
+[
+  {
+    "id": "m01",
+    "who": "mom",
+    "setup": "asks about your family",
+    "es": "¿Cómo está tu familia?",
+    "en": "How is your family?",
+    "choices": ["Están bien, gracias. ¿Y tú?", "Están bien, gracias. ¿Y usted?", "¡Qué onda!"],
+    "answer": 1,
+    "why": "Both make sense, but with {mom} you use usted: ¿Y usted?"
+  },
+  {
+    "id": "m02",
+    "who": "sibling",
+    "setup": "leans over",
+    "es": "¿Te gusta México?",
+    "en": "Do you like Mexico?",
+    "choices": ["¡Me encanta!", "Le ayudo con los platos.", "Mucho gusto."],
+    "answer": 0,
+    "why": "Me encanta = I love it. Short, happy and natural."
+  },
+  {
+    "id": "m03",
+    "who": "dad",
+    "setup": "walks you to the door",
+    "es": "Gracias por venir, {me}.",
+    "en": "Thanks for coming, {me}.",
+    "choices": ["¿Qué onda, {dad}?", "Hay pozole.", "Gracias a ustedes. ¡Todo estuvo delicioso!"],
+    "answer": 2,
+    "why": "Gracias a ustedes = thank you all. Ustedes is Mexico’s plural “you”."
+  },
+  {
+    "id": "m04",
+    "who": "abuela",
+    "setup": "holds out a basket",
+    "es": "Mijo, ¿quieres más pan dulce?",
+    "en": "Dear, do you want more sweet bread?",
+    "choices": ["Sí, por favor, señora. ¡Qué rico!", "¿Qué onda, abuela?", "Trabajo en un banco."],
+    "answer": 0,
+    "why": "Polite and warm. ¿Qué onda? is too casual for grandma."
+  },
+  {
+    "id": "m05",
+    "who": "abuela",
+    "setup": "speaks very fast",
+    "es": "Mi esposo y yo vivimos aquí desde hace cuarenta años.",
+    "en": "My husband and I have lived here for forty years.",
+    "choices": [
+      "Perdón, no entiendo. ¿Puede hablar más despacio, por favor?",
+      "Perdón, no entiendo. ¿Puedes hablar más despacio?",
+      "¡Bye!"
+    ],
+    "answer": 0,
+    "why": "With grandma, use usted: ¿Puede…? Save ¿Puedes…? for {sibling}."
+  },
+  {
+    "id": "m06",
+    "who": "dad",
+    "setup": "offers you a drink",
+    "es": "¿Quieres algo de tomar?",
+    "en": "Do you want something to drink?",
+    "choices": ["Un agua de jamaica, por favor.", "Estoy aprendiendo español.", "Que descansen."],
+    "answer": 0,
+    "why": "Algo de tomar = something to drink. Agua de jamaica is a great pick."
+  },
+  {
+    "id": "m07",
+    "who": "mom",
+    "setup": "greets you at the door",
+    "es": "¡Hola, {me}! ¿Cómo estás?",
+    "en": "Hi, {me}! How are you?",
+    "choices": ["Muy bien, gracias. ¿Y usted?", "Muy bien, gracias. ¿Y tú?", "De nada."],
+    "answer": 0,
+    "why": "She uses tú with you, but you answer with usted: ¿Y usted?"
+  }
+]

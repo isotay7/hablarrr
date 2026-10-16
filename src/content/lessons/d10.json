@@ -1,0 +1,87 @@
+{
+  "id": "d10",
+  "kind": "dialogue",
+  "title": "Hasta luego",
+  "subtitle": "Saying goodbye",
+  "scene": "It’s late. Time to go, which in Mexico takes a while.",
+  "lines": [
+    {
+      "id": "d10-01",
+      "who": "me",
+      "es": "Bueno, ya nos vamos.",
+      "en": "Well, we’re heading out now.",
+      "reg": "ustedes",
+      "to": "everyone",
+      "culture": {
+        "title": "Despedidas",
+        "text": "Say goodbye to every person, one by one, just like the greeting. A goodbye that takes twenty minutes is completely normal."
+      }
+    },
+    {
+      "id": "d10-02",
+      "who": "mom",
+      "es": "¿Ya? ¡Pero si es temprano!",
+      "en": "Already? But it’s early!",
+      "gloss": { "si": { "g": "(emphasis) but…", "n": "¡Pero si…! adds surprise: But it’s early!" } },
+      "note": "Hosts always protest. It means they enjoyed your company."
+    },
+    {
+      "id": "d10-03",
+      "who": "me",
+      "es": "Muchas gracias por todo. La cena estuvo deliciosa.",
+      "en": "Thank you so much for everything. Dinner was delicious.",
+      "reg": "ustedes",
+      "to": "both",
+      "note": "Estuvo = was (past of estar). Learn it as a set phrase for now."
+    },
+    {
+      "id": "d10-04",
+      "who": "dad",
+      "es": "Gracias a ti por venir, {me}.",
+      "en": "Thank you for coming, {me}.",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d10-05",
+      "who": "me",
+      "es": "Ustedes son muy amables.",
+      "en": "You’re all very kind.",
+      "reg": "ustedes",
+      "to": "both"
+    },
+    {
+      "id": "d10-06",
+      "who": "mom",
+      "es": "Vuelve pronto, ¿eh? Aquí tienes tu casa.",
+      "en": "Come back soon, okay? You always have a home here.",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d10-07",
+      "who": "me",
+      "es": "Claro que sí. ¡Cuídese mucho, señora!",
+      "en": "Of course. Take good care, ma’am!",
+      "reg": "usted",
+      "to": "{mom}",
+      "note": "Cuídese (usted) / cuídate (tú) = take care. A warm Mexican goodbye."
+    },
+    {
+      "id": "d10-08",
+      "who": "sibling",
+      "es": "¡Bye, {me}! Nos vemos.",
+      "en": "Bye, {me}! See you.",
+      "reg": "tu",
+      "to": "you",
+      "note": "Many younger Mexicans say “bye” in English."
+    },
+    {
+      "id": "d10-09",
+      "who": "me",
+      "es": "¡Nos vemos, {sibling}! Que descansen todos.",
+      "en": "See you, {sibling}! Rest well, everyone.",
+      "note": "Que descansen = rest well (to everyone). A kind way to say good night as you leave."
+    }
+  ]
+}

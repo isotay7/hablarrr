@@ -1,0 +1,69 @@
+{
+  "id": "d04",
+  "kind": "dialogue",
+  "title": "¡Qué rico!",
+  "subtitle": "Complimenting the food",
+  "scene": "You take your first bite of {mom}’s pozole.",
+  "lines": [
+    {
+      "id": "d04-01",
+      "who": "me",
+      "es": "Señora, el pozole está riquísimo.",
+      "en": "Ma’am, the pozole is delicious.",
+      "reg": "usted",
+      "to": "{mom}",
+      "note": "-ísimo makes any adjective stronger: rico → riquísimo."
+    },
+    {
+      "id": "d04-02",
+      "who": "mom",
+      "es": "¿De veras? ¡Qué bueno que te gusta!",
+      "en": "Really? I’m so glad you like it!",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d04-03",
+      "who": "me",
+      "es": "Sí. ¿Es una receta de familia?",
+      "en": "Yes. Is it a family recipe?",
+      "reg": "usted",
+      "to": "{mom}"
+    },
+    { "id": "d04-04", "who": "mom", "es": "Sí, es la receta de mi mamá.", "en": "Yes, it’s my mom’s recipe." },
+    {
+      "id": "d04-05",
+      "who": "dad",
+      "es": "¿Quieres más, {me}?",
+      "en": "Do you want more, {me}?",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d04-06",
+      "who": "me",
+      "es": "Sí, por favor. Un poquito más.",
+      "en": "Yes, please. A little more.",
+      "reg": "usted",
+      "to": "{dad}",
+      "culture": {
+        "title": "Repetir",
+        "text": "Accepting seconds is the best compliment to the cook. If you’re full, praise the food first, then say: Estoy satisfecho, gracias."
+      }
+    },
+    {
+      "id": "d04-07",
+      "who": "sibling",
+      "es": "Mi mamá cocina el mejor pozole de México.",
+      "en": "My mom makes the best pozole in Mexico."
+    },
+    {
+      "id": "d04-08",
+      "who": "me",
+      "es": "¡Es cierto! Todo está delicioso.",
+      "en": "It’s true! Everything is delicious.",
+      "reg": "tu",
+      "to": "{sibling}"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "s01",
+  "kind": "story",
+  "title": "La creación",
+  "subtitle": "Creation, retold simply",
+  "scene": "A retelling of Genesis 1 in the present tense, with short sentences.",
+  "lines": [
+    {
+      "id": "s01-01",
+      "who": "narrador",
+      "es": "Al principio, no hay nada.",
+      "en": "In the beginning, there is nothing."
+    },
+    { "id": "s01-02", "who": "narrador", "es": "Todo está oscuro.", "en": "Everything is dark." },
+    { "id": "s01-03", "who": "narrador", "es": "Dios crea la luz.", "en": "God creates the light." },
+    { "id": "s01-04", "who": "narrador", "es": "La luz es buena.", "en": "The light is good." },
+    {
+      "id": "s01-05",
+      "who": "narrador",
+      "es": "Dios crea el cielo y el mar.",
+      "en": "God creates the sky and the sea."
+    },
+    {
+      "id": "s01-06",
+      "who": "narrador",
+      "es": "Después, crea la tierra, las plantas y los árboles.",
+      "en": "Then he creates the land, the plants and the trees."
+    },
+    {
+      "id": "s01-07",
+      "who": "narrador",
+      "es": "Crea el sol, la luna y las estrellas.",
+      "en": "He creates the sun, the moon and the stars."
+    },
+    {
+      "id": "s01-08",
+      "who": "narrador",
+      "es": "Crea los peces y los pájaros.",
+      "en": "He creates the fish and the birds."
+    },
+    {
+      "id": "s01-09",
+      "who": "narrador",
+      "es": "Crea los animales: perros, caballos, leones…",
+      "en": "He creates the animals: dogs, horses, lions…"
+    },
+    {
+      "id": "s01-10",
+      "who": "narrador",
+      "es": "Al final, Dios crea al hombre y a la mujer.",
+      "en": "Finally, God creates the man and the woman."
+    },
+    {
+      "id": "s01-11",
+      "who": "narrador",
+      "es": "Dios mira todo. Todo es muy bueno.",
+      "en": "God looks at everything. Everything is very good."
+    },
+    {
+      "id": "s01-12",
+      "who": "narrador",
+      "es": "El séptimo día, Dios descansa.",
+      "en": "On the seventh day, God rests."
+    }
+  ]
+}

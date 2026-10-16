@@ -1,0 +1,75 @@
+{
+  "id": "d05",
+  "kind": "dialogue",
+  "title": "¿A qué te dedicas?",
+  "subtitle": "Talking about your job",
+  "scene": "{dad} is curious about your work.",
+  "lines": [
+    {
+      "id": "d05-01",
+      "who": "dad",
+      "es": "Y dime, {me}, ¿a qué te dedicas?",
+      "en": "So tell me, {me}, what do you do for work?",
+      "reg": "tu",
+      "to": "you",
+      "note": "¿A qué te dedicas? is the polite, everyday way to ask about someone’s job."
+    },
+    {
+      "id": "d05-02",
+      "who": "me",
+      "es": "Trabajo en un banco.",
+      "en": "I work at a bank.",
+      "reg": "usted",
+      "to": "{dad}"
+    },
+    {
+      "id": "d05-03",
+      "who": "dad",
+      "es": "¡Qué bien! ¿Y te gusta tu trabajo?",
+      "en": "How nice! And do you like your job?",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d05-04",
+      "who": "me",
+      "es": "Sí, me gusta mucho. Ayudo a los clientes.",
+      "en": "Yes, I like it a lot. I help the customers.",
+      "reg": "usted",
+      "to": "{dad}"
+    },
+    {
+      "id": "d05-05",
+      "who": "mom",
+      "es": "¿Trabajas todos los días?",
+      "en": "Do you work every day?",
+      "reg": "tu",
+      "to": "you"
+    },
+    {
+      "id": "d05-06",
+      "who": "me",
+      "es": "De lunes a viernes. Los fines de semana descanso.",
+      "en": "Monday to Friday. On weekends I rest.",
+      "reg": "usted",
+      "to": "{mom}"
+    },
+    { "id": "d05-07", "who": "dad", "es": "Muy bien. Es un buen trabajo.", "en": "Very good. It’s a good job." },
+    {
+      "id": "d05-08",
+      "who": "me",
+      "es": "Gracias. Y usted, ¿a qué se dedica?",
+      "en": "Thanks. And you, what do you do?",
+      "reg": "usted",
+      "to": "{dad}",
+      "note": "Se dedica is the usted form of te dedicas. Asking back shows interest and respect."
+    },
+    {
+      "id": "d05-09",
+      "who": "dad",
+      "es": "¡Uy, esa es otra historia!",
+      "en": "Oh, that’s a whole other story!",
+      "note": "Placeholder answer: swap in {dad}’s real job once you know it."
+    }
+  ]
+}
