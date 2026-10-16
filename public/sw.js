@@ -2,16 +2,21 @@
 // Pages: network first, falling back to the cached copy.
 // Build assets (_next/static): cache first, they never change.
 
-const VERSION = "v2";
+const VERSION = "v3";
 const PAGES = `pages-${VERSION}`;
 const ASSETS = `assets-${VERSION}`;
 
 // "/" locally, "/<repo>/" on GitHub Pages.
 const BASE = new URL("./", self.location).pathname;
 
-const LESSONS = ["d01", "d02", "d03", "d04", "d05", "d06", "d07", "d08", "d09", "d10", "s01", "s02", "s03"];
+const LESSONS = [
+  ...["d01", "d02", "d03", "d04", "d05", "d06", "d07", "d08", "d09", "d10"],
+  ...["t01", "t02", "t03", "t04", "t05", "t06"],
+  ...["s01", "s02", "s03"],
+];
 const PRECACHE = [
   "",
+  "empezar/",
   "chill/",
   "leer/",
   "repasar/",
