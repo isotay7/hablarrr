@@ -1,0 +1,46 @@
+{
+  "id": "t06",
+  "kind": "dialogue",
+  "mission": "travel",
+  "title": "¿Me ayuda?",
+  "subtitle": "Asking for help at a pharmacy",
+  "scene": "You woke up feeling awful. There’s a pharmacy on the corner.",
+  "lines": [
+    {
+      "id": "t06-01",
+      "who": "me",
+      "es": "Disculpe, ¿me ayuda, por favor?",
+      "en": "Excuse me, can you help me, please?",
+      "reg": "usted",
+      "to": "the pharmacist"
+    },
+    { "id": "t06-02", "who": "farmaceutico", "es": "Claro. ¿Qué necesita?", "en": "Of course. What do you need?" },
+    {
+      "id": "t06-03",
+      "who": "me",
+      "es": "Me siento mal. Me duele el estómago.",
+      "en": "I feel sick. My stomach hurts.",
+      "note": "Me duele… = my … hurts. Me duele la cabeza = my head hurts."
+    },
+    { "id": "t06-04", "who": "farmaceutico", "es": "¿Desde cuándo?", "en": "Since when?" },
+    { "id": "t06-05", "who": "me", "es": "Desde ayer.", "en": "Since yesterday." },
+    {
+      "id": "t06-06",
+      "who": "farmaceutico",
+      "es": "Tome esto. Una pastilla cada ocho horas.",
+      "en": "Take this. One pill every eight hours."
+    },
+    { "id": "t06-07", "who": "me", "es": "¿Necesito un doctor?", "en": "Do I need a doctor?" },
+    {
+      "id": "t06-08",
+      "who": "farmaceutico",
+      "es": "Si tiene fiebre, sí. Hay un consultorio aquí al lado.",
+      "en": "If you have a fever, yes. There’s a doctor’s office right next door.",
+      "culture": {
+        "title": "Pharmacies",
+        "text": "Many Mexican pharmacies have a small doctor’s office next door (consultorio) with quick, cheap visits. In an emergency, call 911."
+      }
+    },
+    { "id": "t06-09", "who": "me", "es": "Muchas gracias. ¡Muy amable!", "en": "Thank you so much. Very kind!" }
+  ]
+}

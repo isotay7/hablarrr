@@ -1,0 +1,30 @@
+{
+  "id": "t05",
+  "kind": "dialogue",
+  "mission": "travel",
+  "title": "En el mercado",
+  "subtitle": "Bargaining at a market",
+  "scene": "A crafts market. You stop at a stall with woven bags.",
+  "lines": [
+    { "id": "t05-01", "who": "vendedora", "es": "¿Qué le damos, joven?", "en": "What can we get you, young man?" },
+    { "id": "t05-02", "who": "me", "es": "¿Cuánto cuesta esta bolsa?", "en": "How much is this bag?" },
+    { "id": "t05-03", "who": "vendedora", "es": "Cuatrocientos pesos.", "en": "Four hundred pesos." },
+    {
+      "id": "t05-04",
+      "who": "me",
+      "es": "Uy, está un poco cara. ¿Me la deja en trescientos?",
+      "en": "Oof, it’s a bit expensive. Would you let me have it for three hundred?",
+      "reg": "usted",
+      "to": "the vendor",
+      "note": "¿Me la deja en…? is the classic market bargaining line.",
+      "culture": {
+        "title": "Bargaining",
+        "text": "Bargaining is normal for crafts at markets, but not for food or in shops with price tags. Stay friendly and smile. A small discount is the usual result."
+      }
+    },
+    { "id": "t05-05", "who": "vendedora", "es": "Se la dejo en trescientos cincuenta.", "en": "I’ll let you have it for three hundred fifty." },
+    { "id": "t05-06", "who": "me", "es": "Está bien. Me la llevo.", "en": "Okay. I’ll take it." },
+    { "id": "t05-07", "who": "vendedora", "es": "¿Algo más?", "en": "Anything else?" },
+    { "id": "t05-08", "who": "me", "es": "Es todo, gracias.", "en": "That’s all, thanks." }
+  ]
+}

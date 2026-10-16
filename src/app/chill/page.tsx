@@ -13,11 +13,13 @@ import { dayKey } from "@/lib/dates";
 import { buildFeed, type FeedItem, type FeedKind } from "@/lib/feed";
 import { usePlayer } from "@/lib/player";
 import { sfx } from "@/lib/sounds";
+import { unlocks } from "@/lib/stats";
 import { useStore } from "@/lib/store";
 
 const KIND: Record<FeedKind, { label: string; tint: string; chip: string }> = {
   frase: { label: "Frase", tint: "var(--terra-soft)", chip: "bg-terra" },
-  dialogo: { label: "Mini diálogo", tint: "var(--blue-soft)", chip: "bg-blue" },
+  dialogo: { label: "Familia", tint: "var(--terra-soft)", chip: "bg-[#8A3E22]" },
+  viaje: { label: "Viaje", tint: "var(--blue-soft)", chip: "bg-blue" },
   historia: { label: "Historia", tint: "var(--accent)", chip: "bg-[#B97A14]" },
   cultura: { label: "Cultura", tint: "var(--terra-soft)", chip: "bg-terra" },
 };
@@ -36,7 +38,9 @@ function Feed() {
   const { data } = useStore();
   const spanishOnly = data.settings.spanishOnly;
   const items = useMemo(
-    () => buildFeed(dayKey()).filter((it) => !(spanishOnly && it.kind === "cultura")),
+    () => buildFeed(dayKey(), unlocks(data.deck)).filter((it) => !(spanishOnly && it.kind === "cultura")),
+    // Built once per visit: unlocks only change in Start Here.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [spanishOnly],
   );
   const { stop } = usePlayer();

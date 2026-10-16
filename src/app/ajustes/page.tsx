@@ -12,7 +12,7 @@ import { characters } from "@/content";
 import { DEFAULT_NAMES, ROLE_LABELS, ROLES, type Names } from "@/content/people";
 
 export default function SettingsPage() {
-  const { ready, data, updateSettings, exportJSON, importJSON } = useStore();
+  const { ready, data, updateSettings, exportJSON, importJSON, startHereDone } = useStore();
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [msg, setMsg] = useState<string | null>(null);
   const file = useRef<HTMLInputElement>(null);
@@ -93,8 +93,13 @@ export default function SettingsPage() {
           </Row>
           <Row
             label="Solo español"
-            hint="Hide English translations and notes everywhere. Word meanings stay one tap away."
+            hint={
+              startHereDone
+                ? "Hide English translations and notes everywhere. Word meanings stay one tap away."
+                : "Unlocks after you finish all 50 Start Here phrases. Until then, English helps."
+            }
           >
+            {startHereDone ? (
             <Segmented
               value={s.spanishOnly ? "on" : "off"}
               options={[
@@ -103,6 +108,11 @@ export default function SettingsPage() {
               ]}
               onChange={(v) => set({ spanishOnly: v === "on" })}
             />
+            ) : (
+              <span className="flex h-11 items-center gap-2 rounded-full bg-bg px-4 text-[15px] font-bold text-muted">
+                <Icon name="lock" size={16} strokeWidth={2.4} /> Locked
+              </span>
+            )}
           </Row>
           <Row label="Daily goal" hint="Minutes per day for your ring.">
             <Segmented

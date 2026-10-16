@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hablarrr
 
-## Getting Started
+A Mexican Spanish app for two missions: conversations with a partner's family, and getting around Mexico alone. Installable on iPad and iPhone as a PWA. Live at https://isotay7.github.io/hablarrr/.
 
-First, run the development server:
+## How it teaches
+
+- **Start Here** (first on Home): the 50 most useful survival phrases, in order, 5 a day. Each phrase is a loop: hear it slowly with English, learn the sounds ("MOO-choh GOOS-toh"), say it out loud, a quick meaning quiz, then a two-line scene at a taco stand, hotel desk, gas station, market, or the family table. Whole phrases, no grammar yet. Each day ends with an FSRS review and a celebration.
+- **Missions**: every phrase is tagged Family, Travel or Both, with a meter for each mission on Home. Stage 2 grows toward ~800 core words and phrases across both, most frequent first.
+- **Unlocks**: dialogues open at 20 phrases, stories (and Solo español) at 50. Everything can be peeked at early.
+- **Reader**: 10 family dialogues, 6 travel dialogues and 3 Bible story retellings, with tap-to-translate, word status, es-MX speech with karaoke highlighting, and culture notes.
+- **Also**: Chill swipe feed, 15–20 min Focus mode, a weekly mission check that alternates family and travel scenarios, progress, offline support, backup export/import.
+
+## Privacy
+
+Real names never go in this repo. Content uses `{me}`, `{partner}`, `{mom}`, `{dad}` and `{sibling}`; the real names are typed in Settings and stored only in IndexedDB on the device.
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev            # http://localhost:3000
+npm run check:content  # every word has a meaning, every phrase has a scene
+npm run build          # static export to out/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Pushing to `main` deploys to GitHub Pages (`.github/workflows/deploy.yml`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Roadmap
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Phase 2: voice conversation partner.** Claude plays someone at the table or on the road, speaks simple Mexican Spanish, and gently corrects you. Family roles (the parents with usted, the sibling with tú) and travel roles: waiter, hotel clerk, market vendor, gas station attendant, taxi driver, pharmacist. The spoken mission check runs on it. The API key stays on a small server (e.g. Vercel), never in the app.
+- **Phase 3: accounts and sync** between iPad and iPhone (likely Supabase). Every record already has an id and `updatedAt` for last-write-wins sync.

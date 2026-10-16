@@ -1,0 +1,41 @@
+{
+  "id": "t02",
+  "kind": "dialogue",
+  "mission": "travel",
+  "title": "¿Dónde está el museo?",
+  "subtitle": "Asking for directions",
+  "scene": "You’re downtown with a map that isn’t helping. A woman is waiting at the corner.",
+  "lines": [
+    {
+      "id": "t02-01",
+      "who": "me",
+      "es": "Disculpe, señora. ¿Dónde está el museo?",
+      "en": "Excuse me, ma’am. Where is the museum?",
+      "reg": "usted",
+      "to": "a stranger"
+    },
+    { "id": "t02-02", "who": "local", "es": "Está en el centro. ¿Va caminando?", "en": "It’s downtown. Are you walking?" },
+    { "id": "t02-03", "who": "me", "es": "Sí. ¿Está lejos?", "en": "Yes. Is it far?" },
+    {
+      "id": "t02-04",
+      "who": "local",
+      "es": "No, está cerca. Siga derecho dos cuadras.",
+      "en": "No, it’s close. Go straight for two blocks.",
+      "note": "Siga derecho = keep going straight. Una cuadra = one block."
+    },
+    { "id": "t02-05", "who": "local", "es": "Luego, a la izquierda.", "en": "Then, to the left." },
+    { "id": "t02-06", "who": "me", "es": "Perdón, más despacio, por favor.", "en": "Sorry, more slowly, please." },
+    { "id": "t02-07", "who": "local", "es": "Derecho dos cuadras, y a la izquierda.", "en": "Straight two blocks, and left." },
+    {
+      "id": "t02-08",
+      "who": "me",
+      "es": "¡Muchas gracias, señora!",
+      "en": "Thank you so much, ma’am!",
+      "culture": {
+        "title": "Asking the way",
+        "text": "People are kind with directions, and some will answer even when they aren’t sure. If it matters, ask a second person. Distances are usually given in cuadras."
+      }
+    },
+    { "id": "t02-09", "who": "local", "es": "De nada, joven. Que le vaya bien.", "en": "You’re welcome, young man. Take care." }
+  ]
+}

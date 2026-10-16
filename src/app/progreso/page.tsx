@@ -56,7 +56,7 @@ export default function ProgressPage() {
               </span>
               <span className="text-sm font-semibold text-muted">goal: 80% recall</span>
             </div>
-            <h2 className="font-display text-[26px] font-bold leading-tight">50 frases de confianza</h2>
+            <h2 className="font-display text-[26px] font-bold leading-tight">50 frases · familia + viaje</h2>
             <div className="flex items-center gap-4">
               <Ring
                 value={s1.recall ?? 0}

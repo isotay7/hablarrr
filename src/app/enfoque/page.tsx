@@ -13,20 +13,18 @@ import type { DeckCard } from "@/lib/db";
 import { usePlayer } from "@/lib/player";
 import { isDue } from "@/lib/srs";
 import { sfx } from "@/lib/sounds";
-import { streak } from "@/lib/stats";
+import { startHere, streak, unlocks } from "@/lib/stats";
 import { useStore } from "@/lib/store";
 
-const NEW_PER_SESSION = 5;
 const MAX_REVIEWS = 25;
 const REPEAT_COUNT = 5;
 
 type Step = "intro" | "review" | "repeat" | "done";
 
 export default function FocusPage() {
-  const { ready, data, introduceStage1 } = useStore();
+  const { ready, data } = useStore();
   const [step, setStep] = useState<Step>("intro");
   const [queue, setQueue] = useState<string[]>([]);
-  const [newCount, setNewCount] = useState(0);
   const [result, setResult] = useState<SessionResult>({ reviewed: 0, correct: 0 });
   const [startedAt, setStartedAt] = useState(0);
   const [elapsed, setElapsed] = useState(0);
@@ -45,18 +43,17 @@ export default function FocusPage() {
   if (!ready) return <Loading />;
 
   const dueNow = data.deck.filter((c) => isDue(c)).length;
-  const stage1Left = data.deck.filter((c) => c.stage1).length < 50;
-  const nextLesson =
-    lessons.find((l) => {
-      const r = data.reading.find((x) => x.lessonId === l.id);
-      return !r?.finished;
-    }) ?? lessons[0];
+  const open = unlocks(data.deck);
+  const newToday = startHere(data.deck).next.length;
+  const nextLesson = open.dialogues
+    ? lessons.find((l) => {
+        const r = data.reading.find((x) => x.lessonId === l.id);
+        return !r?.finished && (l.kind !== "story" || open.stories);
+      })
+    : undefined;
 
   const start = () => {
     sfx.tap();
-    const added = stage1Left ? introduceStage1(NEW_PER_SESSION) : 0;
-    setNewCount(added);
-    // Read the deck after introducing: the new cards are due immediately.
     setStartedAt(Date.now());
     setStep("review");
   };
@@ -80,19 +77,14 @@ export default function FocusPage() {
 
       <div className="min-h-0 flex-1">
         {step === "intro" && (
-          <Intro
-            dueNow={dueNow}
-            newCount={stage1Left ? NEW_PER_SESSION : 0}
-            lessonTitle={nextLesson.title}
-            onStart={start}
-          />
+          <Intro dueNow={dueNow} newToday={newToday} lessonTitle={nextLesson?.title} onStart={start} />
         )}
         {step === "review" && (
           <ReviewQueue
             onReady={setQueue}
             queue={queue}
             onDone={onReviewDone}
-            label={newCount ? `Repaso + ${newCount} frases nuevas` : "Repaso"}
+            label="Repaso"
           />
         )}
         {step === "repeat" && <ListenRepeat onDone={() => setStep("done")} />}
@@ -109,9 +101,19 @@ export default function FocusPage() {
             <Link href="/" className={secondaryBtn}>
               Hoy
             </Link>
-            <Link href={`/leer/${nextLesson.id}`} className={primaryBtn}>
-              Leer: {nextLesson.title}
-            </Link>
+            {newToday > 0 ? (
+              <Link href="/empezar" className={primaryBtn}>
+                Empieza aquí: {newToday} frases nuevas
+              </Link>
+            ) : nextLesson ? (
+              <Link href={`/leer/${nextLesson.id}`} className={primaryBtn}>
+                Leer: {nextLesson.title}
+              </Link>
+            ) : (
+              <Link href="/chill" className={primaryBtn}>
+                Modo chill
+              </Link>
+            )}
           </WinScreen>
         )}
       </div>
@@ -121,24 +123,22 @@ export default function FocusPage() {
 
 function Intro({
   dueNow,
-  newCount,
+  newToday,
   lessonTitle,
   onStart,
 }: {
   dueNow: number;
-  newCount: number;
-  lessonTitle: string;
+  newToday: number;
+  lessonTitle?: string;
   onStart: () => void;
 }) {
   const steps = [
     { icon: "deck" as const, title: "Repaso", text: dueNow ? `${dueNow} cards due` : "Nothing due yet" },
-    {
-      icon: "bulb" as const,
-      title: "Frases nuevas",
-      text: newCount ? `${newCount} of your 50 phrases` : "All 50 started",
-    },
     { icon: "mic" as const, title: "Escucha y repite", text: `${REPEAT_COUNT} sentences out loud` },
-    { icon: "book" as const, title: "Lectura", text: lessonTitle },
+    ...(lessonTitle ? [{ icon: "book" as const, title: "Lectura", text: lessonTitle }] : []),
+    ...(newToday
+      ? [{ icon: "bulb" as const, title: "Empieza aquí", text: `Then today’s ${newToday} new phrases` }]
+      : []),
   ];
   return (
     <div className="relative mx-auto flex h-full max-w-2xl flex-col justify-center gap-8 overflow-hidden px-6">

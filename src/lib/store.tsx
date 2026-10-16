@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, Fragment, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { applyNames, phrases } from "@/content";
+import { applyNames, phrases, STAGE1_TOTAL } from "@/content";
 import { resolveNames } from "@/content/people";
 import type { Register } from "@/content/types";
 import {
@@ -22,6 +22,7 @@ import {
 import { dayKey, isoWeek } from "./dates";
 import { KNOWN_STABILITY_DAYS, newFsrs, rate, Rating, type Grade } from "./srs";
 import { setSoundEnabled } from "./sounds";
+import { stage1Started } from "./stats";
 import { sentenceKeys } from "./tokenize";
 
 export interface NewCardInput {
@@ -47,8 +48,8 @@ interface Actions {
   finishLesson(lessonId: string): boolean;
   addSeconds(seconds: number): void;
   recordMission(score: number, total: number): void;
-  /** Adds the next Stage 1 phrases to the deck. Returns how many were added. */
-  introduceStage1(count: number): number;
+  /** Finishes a Start Here loop: adds the phrase to the deck, rated by the quiz. */
+  learnPhrase(id: string, quizCorrect: boolean): void;
   exportJSON(): string;
   importJSON(json: string): Promise<void>;
 }
@@ -56,6 +57,8 @@ interface Actions {
 interface StoreValue extends Actions {
   ready: boolean;
   data: Snapshot;
+  /** All 50 Start Here phrases learned once: unlocks Solo español. */
+  startHereDone: boolean;
   wordStatus(key: string): WordStatus;
 }
 
@@ -165,7 +168,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       return upsert(s.days, next, (d) => d.date === key);
     };
 
-    return {
+    const api: Actions = {
       updateSettings(patch) {
         const s = ref.current;
         const settings = { ...s.settings, ...patch, updatedAt: Date.now() };
@@ -279,28 +282,24 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         commit({ ...s, missions: [...s.missions, rec] });
       },
 
-      introduceStage1(count) {
-        const s = ref.current;
-        const inDeck = new Set(s.deck.map((c) => c.id));
-        const next = phrases.filter((p) => !inDeck.has(p.id)).slice(0, count);
-        const now = Date.now();
-        const cards: DeckCard[] = next.map((p, i) => ({
-          id: p.id,
-          source: "phrase",
-          sourceRef: p.category,
-          sourceTitle: "50 frases",
-          es: p.es,
-          en: p.en,
-          note: p.note,
-          reg: p.reg,
-          stage1: true,
-          fsrs: newFsrs(new Date(now + i)),
-          createdAt: now + i,
-          updatedAt: now + i,
-        }));
-        cards.forEach((c) => put("deck", c));
-        if (cards.length) commit({ ...s, deck: [...s.deck, ...cards] });
-        return cards.length;
+      learnPhrase(id, quizCorrect) {
+        const p = phrases.find((x) => x.id === id);
+        if (!p) return;
+        if (!ref.current.deck.some((c) => c.id === id)) {
+          api.saveCard({
+            id: p.id,
+            source: "phrase",
+            sourceRef: p.category,
+            sourceTitle: "Empieza aquí",
+            es: p.es,
+            en: p.en,
+            note: p.note,
+            reg: p.reg,
+            stage1: true,
+          });
+        }
+        // The quiz is the first review: right comes back tomorrow-ish, wrong comes back soon.
+        api.rateCard(id, quizCorrect ? Rating.Good : Rating.Again);
       },
 
       exportJSON() {
@@ -323,16 +322,25 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         commit(snap);
       },
     };
+    return api;
   }, [commit]);
+
+  // Solo español stays off until all of Start Here is done, whatever the saved setting says.
+  const startHereDone = useMemo(() => stage1Started(data.deck) >= STAGE1_TOTAL, [data.deck]);
+  const visibleData = useMemo(
+    () => (startHereDone || !data.settings.spanishOnly ? data : { ...data, settings: { ...data.settings, spanishOnly: false } }),
+    [data, startHereDone],
+  );
 
   const value = useMemo<StoreValue>(
     () => ({
       ...actions,
       ready,
-      data,
+      data: visibleData,
+      startHereDone,
       wordStatus: (key: string) => wordMap.get(key)?.status ?? "new",
     }),
-    [actions, ready, data, wordMap],
+    [actions, ready, visibleData, startHereDone, wordMap],
   );
 
   // Nothing renders until the saved names are in, so the defaults never flash.

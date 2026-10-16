@@ -3,17 +3,26 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { characters, lessons, phrases, STAGE2_GOAL } from "@/content";
+import { characters, lessonLabel, lessons, phrases, STAGE1_TOTAL, STAGE2_GOAL } from "@/content";
 import { Icon } from "@/components/Icon";
 import { SegmentMeter } from "@/components/Meters";
 import { PapelPicado } from "@/components/PapelPicado";
 import { SaveButton } from "@/components/SaveButton";
-import { CandleGlow, Kicker, Loading, RoundButton, SoundToggle, ThemeToggle } from "@/components/ui";
+import { CandleGlow, Kicker, Loading, MissionChip, RoundButton, SoundToggle, ThemeToggle } from "@/components/ui";
 import { dayKey, greeting, isoWeek } from "@/lib/dates";
 import { usePlayer } from "@/lib/player";
 import { hasMexicanVoice, onVoicesChanged, speechSupported } from "@/lib/speech";
 import { isDue } from "@/lib/srs";
-import { minutesOn, stage1Progress, streak, wordsKnown } from "@/lib/stats";
+import {
+  minutesOn,
+  missionMeter,
+  stage1Progress,
+  startHere,
+  streak,
+  unlocks,
+  wordsKnown,
+  type MissionMeter,
+} from "@/lib/stats";
 import { sfx } from "@/lib/sounds";
 import { useStore } from "@/lib/store";
 
@@ -37,16 +46,20 @@ export default function Home() {
   const checkedThisWeek = data.missions.find((m) => m.week === isoWeek());
   const known = wordsKnown(data.words);
 
+  const open = unlocks(data.deck);
+  const readable = lessons.filter((l) => (l.kind === "story" ? open.stories : true));
   const inProgress =
-    lessons.find((l) => {
+    readable.find((l) => {
       const r = data.reading.find((x) => x.lessonId === l.id);
       return r && !r.finished && r.linesRead > 0;
-    }) ?? lessons.find((l) => !data.reading.find((x) => x.lessonId === l.id)?.finished);
+    }) ?? readable.find((l) => !data.reading.find((x) => x.lessonId === l.id)?.finished);
   const reading = inProgress && data.reading.find((r) => r.lessonId === inProgress.id);
 
   // Phrase of the night: same all day, different tomorrow.
   const n = [...dayKey()].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
-  const phrase = phrases[n % phrases.length];
+  const met = phrases.filter((p) => data.deck.some((c) => c.id === p.id));
+  const pool = met.length ? met : phrases.slice(0, 5);
+  const phrase = pool[n % pool.length];
   const phraseId = `night:${phrase.id}`;
 
   return (
@@ -74,23 +87,21 @@ export default function Home() {
         <Hints />
 
         <motion.div {...rise(1)}>
+          <StartHereCard />
+        </motion.div>
+
+        <motion.div {...rise(2)}>
           <Link
             href="/progreso"
-            className="flex flex-col gap-4 rounded-[28px] border border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-card px-6 py-5 transition-transform active:scale-[0.99]"
+            className="flex flex-col gap-4 rounded-[28px] border border-line bg-card px-6 py-5 transition-transform active:scale-[0.99]"
           >
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex flex-col gap-1">
-                <Kicker className="text-accent-text">Misión · la cena con la familia</Kicker>
-                <div className="font-display text-[clamp(22px,3.4vw,28px)] font-bold leading-tight">
-                  {s1.complete ? "Etapa 2: 800 palabras" : "Etapa 1: 50 frases de confianza"}
-                </div>
-              </div>
-              <div className="shrink-0 font-display text-[34px] font-extrabold text-accent-text">
-                {s1.complete ? known : s1.learned}
-                <span className="text-xl text-muted"> / {s1.complete ? STAGE2_GOAL : s1.total}</span>
-              </div>
-            </div>
-            <SegmentMeter learned={s1.learned} learning={s1.learning} total={s1.total} />
+            <Kicker className="text-muted">Tus misiones · 50 frases</Kicker>
+            <MissionRow
+              label="Familia"
+              hint={`Dinner with ${characters.partner.name}’s family`}
+              meter={missionMeter(data.deck, "family")}
+            />
+            <MissionRow label="Viaje" hint="Getting around Mexico" meter={missionMeter(data.deck, "travel")} />
             <div className="flex flex-wrap justify-between gap-x-4 gap-y-1 text-[15px] font-semibold text-muted">
               <span>
                 Recall <b className="text-text">{s1.recall === null ? "—" : `${Math.round(s1.recall * 100)}%`}</b> ·
@@ -102,16 +113,15 @@ export default function Home() {
                   {checkedThisWeek ? `${checkedThisWeek.score}/${checkedThisWeek.total} this week` : "due this week"}
                 </b>
               </span>
-              {!s1.complete && (
-                <span className="flex items-center gap-1.5">
-                  <Icon name="lock" size={15} strokeWidth={2.4} /> Etapa 2 · {STAGE2_GOAL} palabras
-                </span>
-              )}
+              <span className="flex items-center gap-1.5">
+                {!s1.complete && <Icon name="lock" size={15} strokeWidth={2.4} />} Etapa 2 ·{" "}
+                {s1.complete ? `${known} / ${STAGE2_GOAL}` : STAGE2_GOAL} palabras
+              </span>
             </div>
           </Link>
         </motion.div>
 
-        <motion.div {...rise(2)} className="flex flex-wrap gap-2.5">
+        <motion.div {...rise(3)} className="flex flex-wrap gap-2.5">
           <span className="flex items-center gap-2 rounded-full bg-learn px-4 py-2.5 text-[17px] font-bold text-accent-text">
             <Icon name="flame" size={20} />
             {nights === 1 ? "Racha de 1 noche" : `Racha de ${nights} noches`}
@@ -121,7 +131,7 @@ export default function Home() {
           </span>
         </motion.div>
 
-        <motion.div {...rise(3)} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <motion.div {...rise(4)} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Link
             href="/chill"
             onClick={() => sfx.tap()}
@@ -171,15 +181,31 @@ export default function Home() {
             <span className="relative flex flex-col gap-1.5">
               <span className="font-display text-[34px] font-bold leading-none">Modo enfoque</span>
               <span className="text-base leading-snug">
-                15–20 min · {due ? `${due} ${due === 1 ? "card" : "cards"} due` : "new phrases"}, then listen and repeat
+                15–20 min · {due ? `${due} ${due === 1 ? "card" : "cards"} due` : "a quick review"}, then listen and repeat
                 out loud.
               </span>
             </span>
           </Link>
         </motion.div>
 
-        {inProgress && (
-          <motion.div {...rise(4)}>
+        {!open.dialogues && (
+          <motion.div {...rise(5)}>
+            <Link
+              href="/leer"
+              className="flex items-center gap-4 rounded-[28px] border border-dashed border-line px-5 py-4 text-muted transition-transform active:scale-[0.99]"
+            >
+              <Icon name="lock" size={22} className="shrink-0" />
+              <span className="flex-1 text-[17px] leading-snug">
+                <b className="text-text">Dialogues unlock in {open.toDialogues} phrases.</b> Stories unlock at 50. You can
+                peek anytime in the library.
+              </span>
+              <Icon name="arrowRight" size={20} className="shrink-0" />
+            </Link>
+          </motion.div>
+        )}
+
+        {inProgress && open.dialogues && (
+          <motion.div {...rise(5)}>
             <Link
               href={`/leer/${inProgress.id}`}
               className="flex items-center gap-5 rounded-[28px] border border-line bg-surface p-5 transition-transform active:scale-[0.99]"
@@ -189,8 +215,7 @@ export default function Home() {
               </span>
               <span className="flex min-w-0 flex-1 flex-col gap-2">
                 <Kicker className="text-muted">
-                  {reading?.linesRead ? "Keep reading" : "Next up"} ·{" "}
-                  {inProgress.kind === "story" ? "Historia" : `Diálogo ${Number(inProgress.id.slice(1))}`}
+                  {reading?.linesRead ? "Keep reading" : "Next up"} · {lessonLabel(inProgress)}
                 </Kicker>
                 <span lang="es" className="truncate font-display text-[26px] font-bold leading-tight">
                   {inProgress.title}
@@ -213,16 +238,17 @@ export default function Home() {
         )}
 
         <motion.section
-          {...rise(5)}
+          {...rise(6)}
           className="flex flex-col gap-2.5 rounded-[28px] border border-dashed border-[color-mix(in_srgb,var(--accent)_38%,transparent)] bg-card px-6 py-5"
         >
           <div className="flex items-center justify-between">
             <Kicker className="text-accent-text">Frase de la noche</Kicker>
-            <span className="text-sm text-muted">{phrase.reg === "usted" ? "usted" : phrase.category}</span>
+            <MissionChip mission={phrase.mission} />
           </div>
           <div lang="es" className="font-display text-[clamp(32px,5.5vw,44px)] font-bold leading-[1.05]">
             {phrase.es}
           </div>
+          <div className="font-display text-xl font-semibold text-muted">{phrase.say}</div>
           <p className="text-lg leading-snug text-soft">
             “{phrase.en}”{phrase.note ? ` ${phrase.note}` : ""}
           </p>
@@ -239,7 +265,7 @@ export default function Home() {
                 id: phrase.id,
                 source: "phrase",
                 sourceRef: phrase.category,
-                sourceTitle: "50 frases",
+                sourceTitle: "Empieza aquí",
                 es: phrase.es,
                 en: phrase.en,
                 note: phrase.note,
@@ -250,6 +276,115 @@ export default function Home() {
           </div>
         </motion.section>
       </div>
+    </div>
+  );
+}
+
+/** The guided path for beginners. Always first on Home until all 50 are done. */
+function StartHereCard() {
+  const { data } = useStore();
+  const sh = startHere(data.deck);
+  const preview = sh.next.map((p) => p.es.replace(/[.!¡]/g, "")).join(" · ");
+
+  if (sh.finished)
+    return (
+      <Link
+        href="/empezar"
+        className="flex items-center gap-4 rounded-[28px] bg-learn px-6 py-5 transition-transform active:scale-[0.99]"
+      >
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink">
+          <Icon name="check" size={26} strokeWidth={3} />
+        </span>
+        <span className="flex flex-col">
+          <span className="font-display text-2xl font-bold">Las 50 frases ✓</span>
+          <span className="text-muted">Stories and Solo español are unlocked. Tap for a quick review.</span>
+        </span>
+      </Link>
+    );
+
+  if (sh.doneToday)
+    return (
+      <div className="flex flex-col gap-4 rounded-[32px] border border-[color-mix(in_srgb,var(--accent)_35%,transparent)] bg-card px-6 py-6">
+        <div className="flex items-center gap-4">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink">
+            <Icon name="check" size={28} strokeWidth={3} />
+          </span>
+          <span className="flex flex-col">
+            <Kicker className="text-accent-text">Empieza aquí · Día {sh.day}</Kicker>
+            <span className="font-display text-[clamp(24px,4vw,32px)] font-bold leading-tight">¡Hoy ya terminaste!</span>
+            <span className="text-muted">
+              {sh.started} of {STAGE1_TOTAL} phrases · 5 new ones tomorrow
+            </span>
+          </span>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/empezar"
+            onClick={() => sfx.tap()}
+            className="flex h-12 items-center gap-2 rounded-full bg-accent px-5 font-bold text-accent-ink active:scale-95"
+          >
+            <Icon name="deck" size={18} /> Repasar
+          </Link>
+          <Link
+            href="/empezar/#mas"
+            onClick={() => sfx.tap()}
+            className="flex h-12 items-center rounded-full border border-line px-5 font-bold active:scale-95"
+          >
+            Learn 5 more
+          </Link>
+        </div>
+      </div>
+    );
+
+  return (
+    <Link
+      href="/empezar"
+      onClick={() => sfx.tap()}
+      className="relative flex flex-col gap-5 overflow-hidden rounded-[32px] bg-accent p-6 text-accent-ink shadow-[0_24px_60px_color-mix(in_srgb,var(--accent)_35%,transparent)] transition-transform active:scale-[0.98] sm:p-7"
+    >
+      <span aria-hidden className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-white/15" />
+      <span aria-hidden className="absolute -bottom-16 right-16 h-40 w-40 rounded-full bg-white/10" />
+      <span className="relative flex items-center justify-between gap-4">
+        <span className="text-[13px] font-extrabold uppercase tracking-[0.08em] opacity-80">
+          Empieza aquí · Día {sh.day}
+        </span>
+        <span className="font-display text-xl font-extrabold tabular-nums">
+          {sh.started}
+          <span className="opacity-60"> / {STAGE1_TOTAL}</span>
+        </span>
+      </span>
+      <span className="relative flex flex-col gap-1.5">
+        <span className="font-display text-[clamp(32px,6vw,48px)] font-extrabold leading-none tracking-[-0.02em]">
+          {sh.today ? `${sh.next.length} frases más` : `${sh.next.length} frases nuevas`}
+        </span>
+        <span lang="es" className="truncate text-lg font-semibold opacity-80">
+          {preview}
+        </span>
+      </span>
+      <span className="relative flex items-center justify-between gap-4">
+        <span className="text-base font-semibold opacity-80">About 10 minutes · listen, say, quiz</span>
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-accent-ink text-accent">
+          <Icon name="play" size={24} />
+        </span>
+      </span>
+    </Link>
+  );
+}
+
+function MissionRow({ label, hint, meter }: { label: string; hint: string; meter: MissionMeter }) {
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="flex items-baseline justify-between gap-3">
+        <span className="flex items-baseline gap-2">
+          <span className="font-display text-[22px] font-bold">{label}</span>
+          <span className="hidden text-[15px] text-muted sm:inline">{hint}</span>
+        </span>
+        <span className="font-display text-xl font-extrabold tabular-nums text-accent-text">
+          {meter.learned + meter.learning}
+          <span className="text-base text-muted"> / {meter.total}</span>
+        </span>
+      </div>
+      <SegmentMeter learned={meter.learned} learning={meter.learning} total={meter.total} />
     </div>
   );
 }

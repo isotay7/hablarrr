@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { characters } from "@/content";
-import type { CharacterId, Line } from "@/content/types";
+import type { CharacterId, Line, MissionTag } from "@/content/types";
 import { useStore } from "@/lib/store";
 import { sfx } from "@/lib/sounds";
 import { Icon, type IconName } from "./Icon";
@@ -77,8 +77,17 @@ export function RegisterBadge({ line }: { line: Line }) {
 }
 
 export function SpanishOnlyToggle({ className = "" }: { className?: string }) {
-  const { data, updateSettings } = useStore();
+  const { data, updateSettings, startHereDone } = useStore();
   const on = data.settings.spanishOnly;
+  if (!startHereDone)
+    return (
+      <span
+        title="Unlocks after all 50 Start Here phrases"
+        className={`flex h-12 items-center gap-2 rounded-full border border-dashed border-line px-5 text-[15px] font-bold text-muted ${className}`}
+      >
+        <Icon name="lock" size={16} strokeWidth={2.4} /> Solo español
+      </span>
+    );
   return (
     <button
       type="button"
@@ -147,4 +156,19 @@ export function CandleGlow() {
 
 export function Kicker({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <div className={`text-[13px] font-extrabold uppercase tracking-[0.08em] ${className}`}>{children}</div>;
+}
+
+const MISSION_CHIP: Record<MissionTag, { label: string; cls: string }> = {
+  family: { label: "Familia", cls: "bg-[color-mix(in_srgb,var(--terra-soft)_20%,transparent)] text-terra-text" },
+  travel: { label: "Viaje", cls: "bg-[color-mix(in_srgb,var(--blue-soft)_22%,transparent)] text-blue-text" },
+  both: { label: "Familia + viaje", cls: "bg-learn text-accent-text" },
+};
+
+export function MissionChip({ mission, className = "" }: { mission: MissionTag; className?: string }) {
+  const c = MISSION_CHIP[mission];
+  return (
+    <span className={`rounded-full px-3 py-1 text-[13px] font-extrabold tracking-wide ${c.cls} ${className}`}>
+      {c.label}
+    </span>
+  );
 }

@@ -1,0 +1,60 @@
+{
+  "id": "t01",
+  "kind": "dialogue",
+  "mission": "travel",
+  "title": "Tacos al pastor",
+  "subtitle": "Ordering at a taco stand",
+  "scene": "A busy taco stand at night. The taquero slices pork off the spit.",
+  "lines": [
+    {
+      "id": "t01-01",
+      "who": "taquero",
+      "es": "¡Buenas noches, joven! ¿Qué le doy?",
+      "en": "Good evening, young man! What can I get you?",
+      "note": "Joven is how people address a young man they don’t know. Polite and friendly."
+    },
+    {
+      "id": "t01-02",
+      "who": "me",
+      "es": "Buenas noches. Me da tres tacos al pastor, por favor.",
+      "en": "Good evening. Three tacos al pastor, please.",
+      "reg": "usted",
+      "to": "the taquero",
+      "culture": {
+        "title": "Tacos al pastor",
+        "text": "Pork marinated in chiles and cooked on a vertical spit, with a slice of pineapple on top. Order at the stand, eat standing up, and pay at the end."
+      }
+    },
+    {
+      "id": "t01-03",
+      "who": "taquero",
+      "es": "¿Con todo?",
+      "en": "With everything?",
+      "note": "Con todo = with onion and cilantro."
+    },
+    {
+      "id": "t01-04",
+      "who": "me",
+      "es": "Sí, con todo. ¿Tiene agua de horchata?",
+      "en": "Yes, with everything. Do you have horchata?",
+      "reg": "usted",
+      "to": "the taquero",
+      "note": "Horchata is a sweet rice drink. Aguas frescas are fruit or rice drinks."
+    },
+    { "id": "t01-05", "who": "taquero", "es": "Sí. ¿Chica o grande?", "en": "Yes. Small or large?" },
+    { "id": "t01-06", "who": "me", "es": "Grande, por favor.", "en": "Large, please." },
+    {
+      "id": "t01-07",
+      "who": "me",
+      "es": "¡Qué rico! ¿Cuánto es?",
+      "en": "So tasty! How much is it?",
+      "culture": {
+        "title": "Paying at a stand",
+        "text": "Pay after you eat. Tell the taquero what you had, and keep small bills and coins handy: stands are cash only."
+      }
+    },
+    { "id": "t01-08", "who": "taquero", "es": "Son ochenta pesos.", "en": "That’s eighty pesos." },
+    { "id": "t01-09", "who": "me", "es": "Aquí tiene. ¡Gracias!", "en": "Here you go. Thanks!", "reg": "usted", "to": "the taquero" },
+    { "id": "t01-10", "who": "taquero", "es": "¡A usted, joven! Que le vaya bien.", "en": "Thank you, young man! Take care." }
+  ]
+}

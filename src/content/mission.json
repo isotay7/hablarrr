@@ -5,9 +5,14 @@
     "setup": "asks about your family",
     "es": "¿Cómo está tu familia?",
     "en": "How is your family?",
-    "choices": ["Están bien, gracias. ¿Y tú?", "Están bien, gracias. ¿Y usted?", "¡Qué onda!"],
+    "choices": [
+      "Están bien, gracias. ¿Y tú?",
+      "Están bien, gracias. ¿Y usted?",
+      "¡Qué onda!"
+    ],
     "answer": 1,
-    "why": "Both make sense, but with {mom} you use usted: ¿Y usted?"
+    "why": "Both make sense, but with {mom} you use usted: ¿Y usted?",
+    "mission": "family"
   },
   {
     "id": "m02",
@@ -15,9 +20,14 @@
     "setup": "leans over",
     "es": "¿Te gusta México?",
     "en": "Do you like Mexico?",
-    "choices": ["¡Me encanta!", "Le ayudo con los platos.", "Mucho gusto."],
+    "choices": [
+      "¡Me encanta!",
+      "Le ayudo con los platos.",
+      "Mucho gusto."
+    ],
     "answer": 0,
-    "why": "Me encanta = I love it. Short, happy and natural."
+    "why": "Me encanta = I love it. Short, happy and natural.",
+    "mission": "family"
   },
   {
     "id": "m03",
@@ -25,9 +35,14 @@
     "setup": "walks you to the door",
     "es": "Gracias por venir, {me}.",
     "en": "Thanks for coming, {me}.",
-    "choices": ["¿Qué onda, {dad}?", "Hay pozole.", "Gracias a ustedes. ¡Todo estuvo delicioso!"],
+    "choices": [
+      "¿Qué onda, {dad}?",
+      "Hay pozole.",
+      "Gracias a ustedes. ¡Todo estuvo delicioso!"
+    ],
     "answer": 2,
-    "why": "Gracias a ustedes = thank you all. Ustedes is Mexico’s plural “you”."
+    "why": "Gracias a ustedes = thank you all. Ustedes is Mexico’s plural “you”.",
+    "mission": "family"
   },
   {
     "id": "m04",
@@ -35,9 +50,14 @@
     "setup": "holds out a basket",
     "es": "Mijo, ¿quieres más pan dulce?",
     "en": "Dear, do you want more sweet bread?",
-    "choices": ["Sí, por favor, señora. ¡Qué rico!", "¿Qué onda, abuela?", "Trabajo en un banco."],
+    "choices": [
+      "Sí, por favor, señora. ¡Qué rico!",
+      "¿Qué onda, abuela?",
+      "Trabajo en un banco."
+    ],
     "answer": 0,
-    "why": "Polite and warm. ¿Qué onda? is too casual for grandma."
+    "why": "Polite and warm. ¿Qué onda? is too casual for grandma.",
+    "mission": "family"
   },
   {
     "id": "m05",
@@ -51,7 +71,8 @@
       "¡Bye!"
     ],
     "answer": 0,
-    "why": "With grandma, use usted: ¿Puede…? Save ¿Puedes…? for {sibling}."
+    "why": "With grandma, use usted: ¿Puede…? Save ¿Puedes…? for {sibling}.",
+    "mission": "family"
   },
   {
     "id": "m06",
@@ -59,9 +80,14 @@
     "setup": "offers you a drink",
     "es": "¿Quieres algo de tomar?",
     "en": "Do you want something to drink?",
-    "choices": ["Un agua de jamaica, por favor.", "Estoy aprendiendo español.", "Que descansen."],
+    "choices": [
+      "Un agua de jamaica, por favor.",
+      "Estoy aprendiendo español.",
+      "Que descansen."
+    ],
     "answer": 0,
-    "why": "Algo de tomar = something to drink. Agua de jamaica is a great pick."
+    "why": "Algo de tomar = something to drink. Agua de jamaica is a great pick.",
+    "mission": "family"
   },
   {
     "id": "m07",
@@ -69,8 +95,163 @@
     "setup": "greets you at the door",
     "es": "¡Hola, {me}! ¿Cómo estás?",
     "en": "Hi, {me}! How are you?",
-    "choices": ["Muy bien, gracias. ¿Y usted?", "Muy bien, gracias. ¿Y tú?", "De nada."],
+    "choices": [
+      "Muy bien, gracias. ¿Y usted?",
+      "Muy bien, gracias. ¿Y tú?",
+      "De nada."
+    ],
     "answer": 0,
-    "why": "She uses tú with you, but you answer with usted: ¿Y usted?"
+    "why": "She uses tú with you, but you answer with usted: ¿Y usted?",
+    "mission": "family"
+  },
+  {
+    "id": "tm01",
+    "mission": "travel",
+    "who": "taquero",
+    "setup": "asks from behind the grill",
+    "es": "¿Qué le doy?",
+    "en": "What can I get you?",
+    "choices": [
+      "Me da dos tacos, por favor.",
+      "Mucho gusto.",
+      "Trabajo en un banco."
+    ],
+    "answer": 0,
+    "why": "Me da… is how you order in Mexico."
+  },
+  {
+    "id": "tm02",
+    "mission": "travel",
+    "who": "recepcionista",
+    "setup": "checks you in",
+    "es": "¿A nombre de quién?",
+    "en": "Under what name?",
+    "choices": [
+      "A nombre de {me}.",
+      "Para llevar, por favor.",
+      "Lleno, por favor."
+    ],
+    "answer": 0,
+    "why": "A nombre de… = under the name of…"
+  },
+  {
+    "id": "tm03",
+    "mission": "travel",
+    "who": "despachador",
+    "setup": "walks up to your car",
+    "es": "¿Cuánto le pongo?",
+    "en": "How much should I put in?",
+    "choices": [
+      "Lleno, por favor.",
+      "Buenas noches, señora.",
+      "¿Dónde está el baño?"
+    ],
+    "answer": 0,
+    "why": "Lleno = full. He’ll fill the tank."
+  },
+  {
+    "id": "tm04",
+    "mission": "travel",
+    "who": "vendedora",
+    "setup": "wraps up your bag",
+    "es": "¿Algo más?",
+    "en": "Anything else?",
+    "choices": [
+      "Es todo, gracias.",
+      "¿Habla inglés?",
+      "Me llamo {me}."
+    ],
+    "answer": 0,
+    "why": "Es todo = that’s all."
+  },
+  {
+    "id": "tm05",
+    "mission": "travel",
+    "who": "taquero",
+    "setup": "hands you a plate",
+    "es": "¿Para aquí o para llevar?",
+    "en": "For here or to go?",
+    "choices": [
+      "Para llevar, por favor.",
+      "Con permiso.",
+      "Me siento mal."
+    ],
+    "answer": 0,
+    "why": "Para llevar = to go. For here: para aquí."
+  },
+  {
+    "id": "tm06",
+    "mission": "travel",
+    "who": "taxista",
+    "setup": "starts the meter",
+    "es": "¿A dónde lo llevo?",
+    "en": "Where can I take you?",
+    "choices": [
+      "Al centro, por favor.",
+      "De nada.",
+      "¡Provecho!"
+    ],
+    "answer": 0,
+    "why": "Al centro = downtown. Swap in any place: al hotel, al aeropuerto."
+  },
+  {
+    "id": "tm07",
+    "mission": "travel",
+    "who": "farmaceutico",
+    "setup": "looks up from the counter",
+    "es": "¿Qué tiene?",
+    "en": "What’s wrong?",
+    "choices": [
+      "Me siento mal.",
+      "¡Qué rico!",
+      "Es todo, gracias."
+    ],
+    "answer": 0,
+    "why": "Me siento mal = I feel sick."
+  },
+  {
+    "id": "tm08",
+    "mission": "travel",
+    "who": "despachador",
+    "setup": "finishes filling the tank",
+    "es": "¿Efectivo o tarjeta?",
+    "en": "Cash or card?",
+    "choices": [
+      "Pago en efectivo.",
+      "Hasta luego.",
+      "Buenos días."
+    ],
+    "answer": 0,
+    "why": "Pago en efectivo = I’ll pay in cash."
+  },
+  {
+    "id": "tm09",
+    "mission": "travel",
+    "who": "taxista",
+    "setup": "glances in the mirror",
+    "es": "¿Habla español?",
+    "en": "Do you speak Spanish?",
+    "choices": [
+      "Hablo un poco de español.",
+      "La cuenta, por favor.",
+      "¿Le ayudo?"
+    ],
+    "answer": 0,
+    "why": "Hablo un poco = I speak a little. People love that you try."
+  },
+  {
+    "id": "tm10",
+    "mission": "travel",
+    "who": "mesera",
+    "setup": "stops at your table",
+    "es": "¿Qué va a tomar?",
+    "en": "What would you like to drink?",
+    "choices": [
+      "Quisiera agua, por favor.",
+      "¿Está lejos?",
+      "Soy de Estados Unidos."
+    ],
+    "answer": 0,
+    "why": "Quisiera… = I’d like…"
   }
 ]

@@ -1,0 +1,50 @@
+{
+  "id": "t03",
+  "kind": "dialogue",
+  "mission": "travel",
+  "title": "En el hotel",
+  "subtitle": "Checking in at a hotel",
+  "scene": "You roll your suitcase up to the front desk after a long drive.",
+  "lines": [
+    { "id": "t03-01", "who": "recepcionista", "es": "Buenas tardes. Bienvenido.", "en": "Good afternoon. Welcome." },
+    {
+      "id": "t03-02",
+      "who": "me",
+      "es": "Buenas tardes. Tengo una reservación.",
+      "en": "Good afternoon. I have a reservation.",
+      "note": "Mexico says reservación. In Spain you’d hear reserva."
+    },
+    { "id": "t03-03", "who": "recepcionista", "es": "¿A nombre de quién?", "en": "Under what name?" },
+    { "id": "t03-04", "who": "me", "es": "A nombre de {me}.", "en": "Under {me}." },
+    { "id": "t03-05", "who": "recepcionista", "es": "Aquí está. Son dos noches, ¿verdad?", "en": "Here it is. Two nights, right?" },
+    {
+      "id": "t03-06",
+      "who": "me",
+      "es": "Sí, dos noches. ¿El desayuno está incluido?",
+      "en": "Yes, two nights. Is breakfast included?"
+    },
+    {
+      "id": "t03-07",
+      "who": "recepcionista",
+      "es": "Sí, de siete a diez. Su cuarto está en el segundo piso.",
+      "en": "Yes, from seven to ten. Your room is on the second floor."
+    },
+    {
+      "id": "t03-08",
+      "who": "me",
+      "es": "¿Y la contraseña del wifi?",
+      "en": "And the wifi password?",
+      "note": "Wifi is said WEE-fee."
+    },
+    {
+      "id": "t03-09",
+      "who": "recepcionista",
+      "es": "Está en su llave. ¡Que disfrute su estancia!",
+      "en": "It’s on your key card. Enjoy your stay!",
+      "culture": {
+        "title": "At the front desk",
+        "text": "Breakfast hours, the wifi password and checkout time (la hora de salida) are the three things worth asking when you check in."
+      }
+    }
+  ]
+}

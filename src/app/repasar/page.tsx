@@ -64,7 +64,7 @@ function Deck() {
               {(
                 [
                   ["all", "Todas"],
-                  ["stage1", "50 frases"],
+                  ["stage1", "Empieza aquí"],
                   ["saved", "Guardadas"],
                 ] as const
               ).map(([k, label]) => (

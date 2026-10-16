@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { characters, getLesson } from "@/content";
+import { characters, getLesson, lessonLabel } from "@/content";
 import type { Lesson, Line } from "@/content/types";
 import { DeckTarget } from "@/components/DeckFly";
 import { Icon } from "@/components/Icon";
@@ -85,7 +85,7 @@ export function Reader({ id }: { id: string }) {
   };
 
   const isStory = lesson.kind === "story";
-  const index = isStory ? `Historia` : `Diálogo ${Number(lesson.id.slice(1))}`;
+  const index = lessonLabel(lesson);
 
   return (
     <div className="flex h-full flex-col">

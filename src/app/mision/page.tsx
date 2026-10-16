@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { characters, dialogueQuestions, missionQuestions, type MissionQuestion } from "@/content";
+import type { Mission } from "@/content/types";
 import { Icon } from "@/components/Icon";
 import { Sentence } from "@/components/Sentence";
 import { Avatar, Kicker, Loading, RoundButton } from "@/components/ui";
@@ -16,7 +17,12 @@ import { useStore } from "@/lib/store";
 const QUESTIONS = 5;
 const PASS = 4;
 
-function buildCheck(seed: number): MissionQuestion[] {
+/** Even ISO weeks: dinner with the family. Odd weeks: on the road in Mexico. */
+function missionOfWeek(week = isoWeek()): Mission {
+  return Number(week.slice(-2)) % 2 === 0 ? "family" : "travel";
+}
+
+function buildCheck(seed: number, mission: Mission): MissionQuestion[] {
   let s = seed;
   const rand = () => {
     s = (s * 1103515245 + 12345) >>> 0;
@@ -30,7 +36,8 @@ function buildCheck(seed: number): MissionQuestion[] {
     }
     return arr;
   };
-  const picked = [...shuffle(missionQuestions).slice(0, 3), ...shuffle(dialogueQuestions()).slice(0, QUESTIONS - 3)];
+  const own = missionQuestions.filter((q) => q.mission === mission);
+  const picked = [...shuffle(own).slice(0, 3), ...shuffle(dialogueQuestions(mission)).slice(0, QUESTIONS - 3)];
   // Shuffle the answer order too, remapping the right answer.
   return shuffle(picked).map((q) => {
     const order = shuffle(q.choices.map((_, i) => i));
@@ -49,7 +56,8 @@ export default function MissionPage() {
 
 function MissionRun({ seed, onRetry }: { seed: number; onRetry: () => void }) {
   const { data, recordMission } = useStore();
-  const [questions] = useState<MissionQuestion[]>(() => buildCheck(seed));
+  const mission = missionOfWeek();
+  const [questions] = useState<MissionQuestion[]>(() => buildCheck(seed, mission));
   const [idx, setIdx] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const [results, setResults] = useState<boolean[]>([]);
@@ -73,7 +81,11 @@ function MissionRun({ seed, onRetry }: { seed: number; onRetry: () => void }) {
     return passed ? (
       <WinScreen
         title={`${score} / ${questions.length}`}
-        subtitle={`Mission ready. ${characters.partner.name}’s family will feel the effort.`}
+        subtitle={
+          mission === "family"
+            ? `Mission ready. ${characters.partner.name}’s family will feel the effort.`
+            : "Mission ready. Mexico, here you come."
+        }
         stats={[
           { value: `${Math.round((score / questions.length) * 100)}%`, label: "correct" },
           { value: data.missions.length, label: "checks taken" },
@@ -94,7 +106,7 @@ function MissionRun({ seed, onRetry }: { seed: number; onRetry: () => void }) {
           <span className="text-5xl text-muted"> / {questions.length}</span>
         </div>
         <p className="max-w-md text-xl leading-relaxed text-soft">
-          Good practice. Review the usted phrases and try again: you need {PASS} to pass.
+          Good practice. Review your Start Here phrases and try again: you need {PASS} to pass.
         </p>
         <div className="flex gap-3">
           <button type="button" onClick={onRetry} className={secondaryBtn}>
@@ -136,7 +148,11 @@ function MissionRun({ seed, onRetry }: { seed: number; onRetry: () => void }) {
         <RoundButton icon="close" label="Leave mission check" href="/progreso" />
         <div className="min-w-0 flex-1">
           <Kicker className="text-accent-text">Mission check · {isoWeek().replace("-W", " · semana ")}</Kicker>
-          <div className="truncate font-display text-2xl font-bold">Dinner at {characters.mom.name} and {characters.dad.name}’s</div>
+          <div className="truncate font-display text-2xl font-bold">
+            {mission === "family"
+              ? `Dinner at ${characters.mom.name} and ${characters.dad.name}’s`
+              : "On the road in Mexico"}
+          </div>
         </div>
         <div role="img" aria-label={`${score} correct so far`} className="flex gap-2">
           {questions.map((_, i) => (

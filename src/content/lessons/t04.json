@@ -1,0 +1,42 @@
+{
+  "id": "t04",
+  "kind": "dialogue",
+  "mission": "travel",
+  "title": "En la gasolinera",
+  "subtitle": "Paying for gas",
+  "scene": "You pull up to a pump on the highway. An attendant walks over.",
+  "lines": [
+    {
+      "id": "t04-01",
+      "who": "despachador",
+      "es": "Buenas. ¿Cuánto le pongo?",
+      "en": "Hi. How much should I put in?",
+      "note": "Buenas is a short, casual hello for any time of day.",
+      "culture": {
+        "title": "Gas stations",
+        "text": "An attendant pumps the gas for you. Check that the pump starts at zero (en ceros) and give a small tip, about 10 to 20 pesos."
+      }
+    },
+    {
+      "id": "t04-02",
+      "who": "me",
+      "es": "Lleno, por favor. De la verde.",
+      "en": "Fill it up, please. The green one.",
+      "note": "Regular gas (Magna) usually has a green handle; Premium is red."
+    },
+    { "id": "t04-03", "who": "despachador", "es": "Muy bien. Está en ceros, joven.", "en": "All right. It’s at zero, young man." },
+    { "id": "t04-04", "who": "despachador", "es": "¿Le reviso el aceite?", "en": "Should I check the oil?" },
+    { "id": "t04-05", "who": "me", "es": "No, gracias. ¿Aceptan tarjeta?", "en": "No, thanks. Do you take cards?" },
+    { "id": "t04-06", "who": "despachador", "es": "Sí, claro. Son ochocientos pesos.", "en": "Yes, of course. That’s eight hundred pesos." },
+    {
+      "id": "t04-07",
+      "who": "me",
+      "es": "Aquí tiene. Y esto es para usted.",
+      "en": "Here you go. And this is for you.",
+      "reg": "usted",
+      "to": "the attendant",
+      "note": "What to say as you hand over the tip."
+    },
+    { "id": "t04-08", "who": "despachador", "es": "Gracias, joven. ¡Buen viaje!", "en": "Thanks, young man. Have a good trip!" }
+  ]
+}

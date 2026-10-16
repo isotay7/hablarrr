@@ -10,7 +10,7 @@ import { DeckFlyProvider } from "./DeckFly";
 import { TabBar } from "./TabBar";
 
 // Full-screen flows hide the tab bar.
-const IMMERSIVE = [/^\/leer\/.+/, /^\/enfoque/, /^\/mision/, /^\/repasar\/sesion/];
+const IMMERSIVE = [/^\/empezar/, /^\/leer\/.+/, /^\/enfoque/, /^\/mision/, /^\/repasar\/sesion/];
 
 const TICK_MS = 5000;
 const FLUSH_MS = 15000;

@@ -1,8 +1,8 @@
-import { dialogues, phrases, stories } from "@/content";
+import { dialogues, lessonMission, phrases, stories } from "@/content";
 import type { CharacterId, Line } from "@/content/types";
 import type { NewCardInput } from "./store";
 
-export type FeedKind = "frase" | "dialogo" | "historia" | "cultura";
+export type FeedKind = "frase" | "dialogo" | "viaje" | "historia" | "cultura";
 
 export interface FeedLine {
   id: string;
@@ -33,6 +33,13 @@ const CATEGORY_LABEL: Record<string, string> = {
   gracias: "thanks",
   despedidas: "goodbyes",
   ayuda: "when you’re lost",
+  direcciones: "directions",
+  dinero: "paying",
+  hotel: "at the hotel",
+  transporte: "getting around",
+  compras: "shopping",
+  salud: "health",
+  tiempo: "time",
 };
 
 function lineCard(lessonId: string, lessonTitle: string, kind: "dialogue" | "story", l: Line): NewCardInput {
@@ -52,7 +59,13 @@ function regLabel(reg?: string) {
   return reg === "usted" ? " · usted" : reg === "tu" ? " · tú" : reg === "ustedes" ? " · ustedes" : "";
 }
 
-export function buildFeed(seed: string): FeedItem[] {
+/** What Start Here has unlocked so far. Phrases and their scenes are always in. */
+export interface FeedAccess {
+  dialogues: boolean;
+  stories: boolean;
+}
+
+export function buildFeed(seed: string, access: FeedAccess): FeedItem[] {
   const frases: FeedItem[] = phrases.map((p) => ({
     id: `f-${p.id}`,
     kind: "frase",
@@ -67,7 +80,7 @@ export function buildFeed(seed: string): FeedItem[] {
           id: p.id,
           source: "phrase",
           sourceRef: p.category,
-          sourceTitle: "50 frases",
+          sourceTitle: "Empieza aquí",
           es: p.es,
           en: p.en,
           note: p.note,
@@ -78,14 +91,35 @@ export function buildFeed(seed: string): FeedItem[] {
     ],
   }));
 
+  // Each phrase's two-line scene: a taste of travel or family life from day one.
+  const escenas: FeedItem[] = phrases.map((p) => ({
+    id: `e-${p.id}`,
+    kind: p.scene.mission === "travel" ? "viaje" : "dialogo",
+    context: p.scene.where,
+    lines: p.scene.lines.map((l, n) => ({
+      id: `feed:${p.id}:scene:${n}`,
+      who: l.who,
+      es: l.es,
+      en: l.en,
+      card: {
+        id: `${p.id}-scene-${n}`,
+        source: "phrase",
+        sourceRef: p.category,
+        sourceTitle: p.scene.where,
+        es: l.es,
+        en: l.en,
+      },
+    })),
+  }));
+
   const dialogos: FeedItem[] = [];
   const cultura: FeedItem[] = [];
-  for (const d of dialogues) {
+  for (const d of access.dialogues ? dialogues : []) {
     for (let i = 0; i + 1 < d.lines.length; i += 2) {
       const pair = d.lines.slice(i, i + 2);
       dialogos.push({
         id: `d-${pair[0].id}`,
-        kind: "dialogo",
+        kind: lessonMission(d) === "travel" ? "viaje" : "dialogo",
         context: d.title,
         href: `/leer/${d.id}`,
         note: pair.find((l) => l.note)?.note,
@@ -122,7 +156,7 @@ export function buildFeed(seed: string): FeedItem[] {
   }
 
   const historias: FeedItem[] = [];
-  for (const s of stories) {
+  for (const s of access.stories ? stories : []) {
     const chunks = Math.ceil(s.lines.length / 3);
     for (let c = 0; c < chunks; c++) {
       const part = s.lines.slice(c * 3, c * 3 + 3);
@@ -144,7 +178,7 @@ export function buildFeed(seed: string): FeedItem[] {
 
   // Phrases and dialogue bits shuffle freely; story parts stay in order but get spread out.
   const rand = mulberry32(hash(seed));
-  const pool = shuffle([...frases, ...dialogos, ...cultura], rand);
+  const pool = shuffle([...frases, ...escenas, ...dialogos, ...cultura], rand);
   const out: FeedItem[] = [];
   const storyQueue = [...historias];
   let sinceStory = 0;

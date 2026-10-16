@@ -1,7 +1,6 @@
 // Checks every lesson and phrase: unique ids, required fields, and a meaning for every word.
 // Run with: npm run check:content
-import { lessons, lexicon, missionQuestions, phrases } from "../src/content";
-import { ROLES } from "../src/content/people";
+import { characters, lessons, lexicon, missionQuestions, phrases } from "../src/content";
 import { tokenize } from "../src/lib/tokenize";
 
 const problems: string[] = [];
@@ -33,6 +32,16 @@ for (const lesson of lessons) {
 for (const p of phrases) {
   checkId(p.id);
   checkText(p.id, p.es, p.en);
+  if (!p.say?.trim()) problems.push(`${p.id}: no pronunciation guide`);
+  if (!["family", "travel", "both"].includes(p.mission)) problems.push(`${p.id}: mission must be family, travel or both`);
+  if (p.scene?.lines.length !== 2) problems.push(`${p.id}: the mini scene needs exactly 2 lines`);
+  const bare = (t: string) => t.toLowerCase().replace(/[¡!¿?.,]/g, "").trim();
+  const inScene = p.scene?.lines.some((l) => bare(l.es).includes(bare(p.es)));
+  if (!inScene) problems.push(`${p.id}: the mini scene doesn’t use the phrase`);
+  p.scene?.lines.forEach((l, i) => {
+    if (!(l.who in characters)) problems.push(`${p.id}.scene.${i}: unknown speaker "${l.who}"`);
+    checkText(`${p.id}.scene.${i}`, l.es, l.en);
+  });
 }
 
 for (const q of missionQuestions) {
@@ -43,12 +52,13 @@ for (const q of missionQuestions) {
 }
 
 // Real names never go in the repo: speakers are roles, text uses {me}, {partner}, …
-const roleSet = new Set<string>(ROLES);
 for (const lesson of lessons) {
   for (const line of lesson.lines) {
-    if (line.who && !roleSet.has(line.who) && line.who !== "abuela" && line.who !== "narrador")
-      problems.push(`${line.id}: unknown speaker "${line.who}"`);
+    if (line.who && !(line.who in characters)) problems.push(`${line.id}: unknown speaker "${line.who}"`);
   }
+}
+for (const q of missionQuestions) {
+  if (q.mission !== "family" && q.mission !== "travel") problems.push(`${q.id}: mission must be family or travel`);
 }
 for (const [key, where] of missing) problems.push(`no meaning for "${key}" (${where})`);
 
