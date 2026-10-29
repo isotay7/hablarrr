@@ -14,7 +14,7 @@ const LESSONS = [
   ...["t01", "t02", "t03", "t04", "t05", "t06"],
   ...["s01", "s02", "s03"],
 ];
-const GAMES = ["escucha", "arma", "rayo"];
+const GAMES = ["loteria", "escucha", "arma", "parejas", "rayo", "tacos"];
 const PRECACHE = [
   "",
   "empezar/",

@@ -21,7 +21,6 @@ export const GAMES: GameInfo[] = [
     icon: "grid",
     tone: "#B4532F",
     best: (n) => `${n} ${n === 1 ? "win" : "wins"}`,
-    soon: true,
   },
   {
     id: "escucha",
@@ -46,7 +45,6 @@ export const GAMES: GameInfo[] = [
     icon: "cards",
     tone: "#6B4E8A",
     best: (n) => `Best ${n}s`,
-    soon: true,
   },
   {
     id: "rayo",
@@ -63,7 +61,6 @@ export const GAMES: GameInfo[] = [
     icon: "taco",
     tone: "#8A5A2B",
     best: (n) => `Best tips $${n}`,
-    soon: true,
   },
 ];
 

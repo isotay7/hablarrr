@@ -212,10 +212,13 @@ export function PhraseArt({
   category,
   size = 48,
   className = "",
+  tint,
 }: {
   category: PhraseCategory | string;
   size?: number;
   className?: string;
+  /** Line color; the card's own ink when missing. */
+  tint?: string;
 }) {
   const a = artFor(category);
   return (
@@ -230,7 +233,7 @@ export function PhraseArt({
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
-      style={{ color: a.fg }}
+      style={{ color: tint ?? a.fg }}
     >
       {a.draw}
     </svg>
