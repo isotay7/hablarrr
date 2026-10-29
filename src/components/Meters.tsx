@@ -88,7 +88,7 @@ export function SegmentMeter({ learned, learning, total }: { learned: number; le
       role="img"
       aria-label={`${learned} of ${total} phrases learned, ${learning} in progress`}
       className="grid gap-[3px]"
-      style={{ gridTemplateColumns: `repeat(${total}, minmax(0, 1fr))` }}
+      style={{ gridTemplateColumns: `repeat(${Math.min(total, 50)}, minmax(0, 1fr))` }}
     >
       {Array.from({ length: total }, (_, i) => (
         <motion.div

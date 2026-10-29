@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, Fragment, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { applyNames, phrases, STAGE1_TOTAL } from "@/content";
+import { applyNames, phrases, STAGE1A_TOTAL } from "@/content";
 import { resolveNames } from "@/content/people";
 import type { Register } from "@/content/types";
 import {
@@ -75,7 +75,7 @@ interface Actions {
 interface StoreValue extends Actions {
   ready: boolean;
   data: Snapshot;
-  /** All 50 Start Here phrases learned once: unlocks Solo español. */
+  /** The first 50 Start Here phrases learned once: unlocks Solo español. */
   startHereDone: boolean;
   wordStatus(key: string): WordStatus;
 }
@@ -407,7 +407,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, [commit]);
 
   // Solo español stays off until all of Start Here is done, whatever the saved setting says.
-  const startHereDone = useMemo(() => stage1Started(data.deck) >= STAGE1_TOTAL, [data.deck]);
+  const startHereDone = useMemo(() => stage1Started(data.deck) >= STAGE1A_TOTAL, [data.deck]);
   const visibleData = useMemo(
     () => (startHereDone || !data.settings.spanishOnly ? data : { ...data, settings: { ...data.settings, spanishOnly: false } }),
     [data, startHereDone],

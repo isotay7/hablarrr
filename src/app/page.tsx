@@ -95,7 +95,7 @@ export default function Home() {
             href="/progreso"
             className="flex flex-col gap-4 rounded-[28px] border border-line bg-card px-6 py-5 transition-transform active:scale-[0.99]"
           >
-            <Kicker className="text-muted">Tus misiones · 50 frases</Kicker>
+            <Kicker className="text-muted">Tus misiones · {STAGE1_TOTAL} frases</Kicker>
             <MissionRow
               label="Familia"
               hint={`Dinner with ${characters.partner.name}’s family`}
@@ -296,7 +296,7 @@ function StartHereCard() {
           <Icon name="check" size={26} strokeWidth={3} />
         </span>
         <span className="flex flex-col">
-          <span className="font-display text-2xl font-bold">Las 50 frases ✓</span>
+          <span className="font-display text-2xl font-bold">Las {STAGE1_TOTAL} frases ✓</span>
           <span className="text-muted">Stories and Solo español are unlocked. Tap for a quick review.</span>
         </span>
       </Link>

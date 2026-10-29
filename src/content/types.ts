@@ -78,7 +78,10 @@ export type PhraseCategory =
   | "transporte"
   | "compras"
   | "salud"
-  | "tiempo";
+  | "tiempo"
+  | "charla"
+  | "sentimientos"
+  | "emergencias";
 
 export interface SceneLine {
   who: CharacterId;

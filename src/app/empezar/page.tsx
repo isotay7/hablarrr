@@ -143,7 +143,7 @@ function Intro({
         <div className="flex flex-col gap-2">
           <h1 className="font-display text-[clamp(40px,8vw,64px)] font-extrabold leading-[1.02] tracking-[-0.02em]">
             {plan.finished
-              ? "¡Las 50 frases!"
+              ? `¡Las ${STAGE1_TOTAL} frases!`
               : nothingNew
                 ? "Hoy ya terminaste."
                 : `${plan.next.length} frases nuevas`}
@@ -569,7 +569,7 @@ function Done({ before, learnedNow, day }: { before: number; learnedNow: number;
   const unlockedDialogues = before < UNLOCK_DIALOGUES && after >= UNLOCK_DIALOGUES;
   const unlockedStories = before < UNLOCK_STORIES && after >= UNLOCK_STORIES;
   const subtitle = unlockedStories
-    ? "All 50 phrases! Stories and Solo español are unlocked."
+    ? "50 phrases! Stories, Solo español and phrases 51–100 are unlocked."
     : unlockedDialogues
       ? "20 phrases: the dialogues are unlocked. ¡Felicidades!"
       : learnedNow

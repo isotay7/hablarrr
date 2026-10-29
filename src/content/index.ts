@@ -148,6 +148,8 @@ function pickDeterministic<T>(list: T[], seed: string, n: number): T[] {
 }
 
 export const STAGE1_TOTAL = phrases.length;
+/** The first 50 phrases (Stage 1A): finishing them unlocks stories, Solo español and phrases 51–100. */
+export const STAGE1A_TOTAL = 50;
 
 /** Stage 1 phrases that count toward a mission's meter: its own plus the shared ones. */
 export function missionPhrases(m: Mission): Phrase[] {

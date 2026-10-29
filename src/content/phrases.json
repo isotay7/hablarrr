@@ -425,5 +425,450 @@
       { "who": "dad", "es": "Adiós, {me}.", "en": "Bye, {me}." },
       { "who": "me", "es": "Que le vaya bien, señor.", "en": "Take care, sir." }
     ] }
+  },
+  {
+    "id": "f51", "category": "charla", "mission": "both",
+    "es": "Claro.", "en": "Sure. / Of course.", "say": "KLAH-roh",
+    "note": "Claro que sí is even warmer.",
+    "scene": { "where": "At the hotel desk", "mission": "travel", "lines": [
+      { "who": "recepcionista", "es": "¿Me firma aquí, por favor?", "en": "Can you sign here, please?" },
+      { "who": "me", "es": "Claro.", "en": "Sure." }
+    ] }
+  },
+  {
+    "id": "f52", "category": "charla", "mission": "family",
+    "es": "¿Y tú?", "en": "And you?", "say": "ee TOO", "reg": "tu",
+    "note": "Bounces a question back to {sibling} or friends. With {mom} and {dad} it’s ¿y usted?",
+    "scene": { "where": "In the living room", "mission": "family", "lines": [
+      { "who": "sibling", "es": "¿Cómo estás, {me}?", "en": "How are you, {me}?" },
+      { "who": "me", "es": "Bien, ¿y tú?", "en": "Good, and you?" }
+    ] }
+  },
+  {
+    "id": "f53", "category": "ayuda", "mission": "both",
+    "es": "¿Qué significa eso?", "en": "What does that mean?", "say": "keh seeg-nee-FEE-kah EH-soh",
+    "note": "Or name the word: ¿qué significa «botana»?",
+    "scene": { "where": "At the dinner table", "mission": "family", "lines": [
+      { "who": "dad", "es": "¿Quieres botana?", "en": "Want a snack?" },
+      { "who": "me", "es": "Perdón, ¿qué significa eso?", "en": "Sorry, what does that mean?" }
+    ] }
+  },
+  {
+    "id": "f54", "category": "sentimientos", "mission": "both",
+    "es": "Lo siento.", "en": "I’m sorry.", "say": "loh SYEHN-toh",
+    "note": "For real apologies and sad news. For a little bump, perdón is enough.",
+    "scene": { "where": "Arriving late", "mission": "family", "lines": [
+      { "who": "me", "es": "Lo siento, llegué tarde.", "en": "I’m sorry, I got here late." },
+      { "who": "mom", "es": "No te preocupes, mijo.", "en": "Don’t worry, sweetie." }
+    ] }
+  },
+  {
+    "id": "f55", "category": "emergencias", "mission": "travel",
+    "es": "¡Ayuda!", "en": "Help!", "say": "ah-YOO-dah",
+    "note": "Shout it. The emergency number in Mexico is 911.",
+    "scene": { "where": "On the street", "mission": "travel", "lines": [
+      { "who": "me", "es": "¡Ayuda, por favor!", "en": "Help, please!" },
+      { "who": "local", "es": "¿Qué pasó? ¿Está bien?", "en": "What happened? Are you okay?" }
+    ] }
+  },
+  {
+    "id": "f56", "category": "charla", "mission": "both",
+    "es": "Estoy aprendiendo español.", "en": "I’m learning Spanish.", "say": "ehs-TOY ah-prehn-DYEHN-doh ehs-pah-NYOHL",
+    "note": "People light up when they hear this. Expect patience and help.",
+    "scene": { "where": "At the dinner table", "mission": "family", "lines": [
+      { "who": "dad", "es": "¡Hablas muy bien!", "en": "You speak really well!" },
+      { "who": "me", "es": "Gracias. Estoy aprendiendo español.", "en": "Thanks. I’m learning Spanish." }
+    ] }
+  },
+  {
+    "id": "f57", "category": "charla", "mission": "both",
+    "es": "Soy de {home}.", "en": "I’m from {home}.", "say": "SOY deh {home}",
+    "note": "Your state comes from Settings → Nombres. For the country: soy de Estados Unidos.",
+    "scene": { "where": "On the street", "mission": "travel", "lines": [
+      { "who": "local", "es": "Usted no es de aquí, ¿verdad?", "en": "You’re not from here, are you?" },
+      { "who": "me", "es": "No, soy de {home}.", "en": "No, I’m from {home}." }
+    ] }
+  },
+  {
+    "id": "f58", "category": "charla", "mission": "both",
+    "es": "¿De dónde es usted?", "en": "Where are you from?", "say": "deh DOHN-deh EHS oos-TEHD", "reg": "usted",
+    "note": "With {sibling} or anyone your age: ¿de dónde eres?",
+    "scene": { "where": "In a taxi", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿De dónde es usted?", "en": "Where are you from?" },
+      { "who": "taxista", "es": "Soy de aquí, de Guadalajara.", "en": "I’m from here, from Guadalajara." }
+    ] }
+  },
+  {
+    "id": "f59", "category": "charla", "mission": "both",
+    "es": "¿A qué se dedica?", "en": "What do you do (for work)?", "say": "ah KEH seh deh-DEE-kah", "reg": "usted",
+    "note": "The polite way. With {sibling}: ¿a qué te dedicas?",
+    "scene": { "where": "On the bus", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿A qué se dedica?", "en": "What do you do?" },
+      { "who": "local", "es": "Soy maestra.", "en": "I’m a teacher." }
+    ] }
+  },
+  {
+    "id": "f60", "category": "ayuda", "mission": "both",
+    "es": "¿Cómo se dice en español?", "en": "How do you say it in Spanish?", "say": "KOH-moh seh DEE-seh ehn ehs-pah-NYOHL",
+    "note": "Say the English word first, then ask.",
+    "scene": { "where": "Setting the table", "mission": "family", "lines": [
+      { "who": "me", "es": "Fork… ¿cómo se dice en español?", "en": "Fork… how do you say it in Spanish?" },
+      { "who": "sibling", "es": "Se dice «tenedor».", "en": "You say «tenedor»." }
+    ] }
+  },
+  {
+    "id": "f61", "category": "comida", "mission": "family",
+    "es": "Ya estoy lleno.", "en": "I’m full.", "say": "YAH ehs-TOY YEH-noh",
+    "note": "Ya = already. They’ll keep offering food, so you’ll need this one. Pair it with estuvo delicioso.",
+    "scene": { "where": "At the dinner table", "mission": "family", "lines": [
+      { "who": "mom", "es": "¿Otro taco, mijo?", "en": "Another taco, sweetie?" },
+      { "who": "me", "es": "No, gracias. Ya estoy lleno.", "en": "No, thanks. I’m full." }
+    ] }
+  },
+  {
+    "id": "f62", "category": "comida", "mission": "family",
+    "es": "Estuvo delicioso.", "en": "That was delicious.", "say": "ehs-TOO-voh deh-lee-SYOH-soh",
+    "note": "When the meal is over. While you’re still eating, it’s ¡está delicioso!",
+    "scene": { "where": "After dinner", "mission": "family", "lines": [
+      { "who": "me", "es": "Señora, estuvo delicioso.", "en": "Ma’am, that was delicious." },
+      { "who": "mom", "es": "Ay, qué bueno que te gustó.", "en": "Oh, I’m so glad you liked it." }
+    ] }
+  },
+  {
+    "id": "f63", "category": "comida", "mission": "both",
+    "es": "¡Salud!", "en": "Cheers!", "say": "sah-LOOD",
+    "note": "When you raise a glass. Also what you say when someone sneezes.",
+    "scene": { "where": "A toast at dinner", "mission": "family", "lines": [
+      { "who": "dad", "es": "¡Por la familia!", "en": "To the family!" },
+      { "who": "me", "es": "¡Salud!", "en": "Cheers!" }
+    ] }
+  },
+  {
+    "id": "f64", "category": "comida", "mission": "family",
+    "es": "¿Me pasa la sal, por favor?", "en": "Could you pass the salt, please?", "say": "meh PAH-sah lah SAHL, por fah-VOR", "reg": "usted",
+    "note": "To {mom} or {dad}. With {sibling}: ¿me pasas la sal?",
+    "scene": { "where": "At the dinner table", "mission": "family", "lines": [
+      { "who": "me", "es": "¿Me pasa la sal, por favor?", "en": "Could you pass the salt, please?" },
+      { "who": "dad", "es": "Aquí tienes.", "en": "Here you go." }
+    ] }
+  },
+  {
+    "id": "f65", "category": "sentimientos", "mission": "both",
+    "es": "Tengo hambre.", "en": "I’m hungry.", "say": "TEHN-goh AHM-breh",
+    "note": "Literally “I have hunger.” Thirsty works the same way: tengo sed.",
+    "scene": { "where": "Before dinner", "mission": "family", "lines": [
+      { "who": "partner", "es": "¿Tienes hambre?", "en": "Are you hungry?" },
+      { "who": "me", "es": "Sí, tengo hambre.", "en": "Yes, I’m hungry." }
+    ] }
+  },
+  {
+    "id": "f66", "category": "comida", "mission": "travel",
+    "es": "Una mesa para dos, por favor.", "en": "A table for two, please.", "say": "OO-nah MEH-sah PAH-rah DOHS, por fah-VOR",
+    "note": "Change the number: para tres, para cuatro.",
+    "scene": { "where": "At a restaurant", "mission": "travel", "lines": [
+      { "who": "mesera", "es": "Buenas noches. ¿Cuántos son?", "en": "Good evening. How many?" },
+      { "who": "me", "es": "Una mesa para dos, por favor.", "en": "A table for two, please." }
+    ] }
+  },
+  {
+    "id": "f67", "category": "comida", "mission": "travel",
+    "es": "¿Qué me recomienda?", "en": "What do you recommend?", "say": "KEH meh reh-koh-MYEHN-dah", "reg": "usted",
+    "note": "Locals know best. Works for food, places, anything.",
+    "scene": { "where": "At a restaurant", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿Qué me recomienda?", "en": "What do you recommend?" },
+      { "who": "mesera", "es": "Las enchiladas están muy buenas.", "en": "The enchiladas are really good." }
+    ] }
+  },
+  {
+    "id": "f68", "category": "dinero", "mission": "travel",
+    "es": "¿La propina está incluida?", "en": "Is the tip included?", "say": "lah proh-PEE-nah ehs-TAH een-kloo-EE-dah",
+    "note": "Usually it isn’t. 10 to 15 percent is normal at restaurants.",
+    "scene": { "where": "Paying the check", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿La propina está incluida?", "en": "Is the tip included?" },
+      { "who": "mesera", "es": "No, no está incluida.", "en": "No, it isn’t included." }
+    ] }
+  },
+  {
+    "id": "f69", "category": "dinero", "mission": "travel",
+    "es": "¿Tiene cambio?", "en": "Do you have change?", "say": "TYEH-neh KAHM-byoh", "reg": "usted",
+    "note": "Small shops often can’t break a 500-peso bill. Ask before you pay with one.",
+    "scene": { "where": "At a corner shop", "mission": "travel", "lines": [
+      { "who": "me", "es": "Solo tengo quinientos. ¿Tiene cambio?", "en": "I only have a five hundred. Do you have change?" },
+      { "who": "vendedora", "es": "Sí, sí tengo.", "en": "Yes, I do." }
+    ] }
+  },
+  {
+    "id": "f70", "category": "charla", "mission": "both",
+    "es": "No sé.", "en": "I don’t know.", "say": "noh SEH",
+    "note": "Short and honest. A shrug helps.",
+    "scene": { "where": "In the kitchen", "mission": "family", "lines": [
+      { "who": "sibling", "es": "¿A qué hora llega mi papá?", "en": "What time does my dad get here?" },
+      { "who": "me", "es": "No sé.", "en": "I don’t know." }
+    ] }
+  },
+  {
+    "id": "f71", "category": "charla", "mission": "both",
+    "es": "¿En serio?", "en": "Really?", "say": "ehn SEH-ryoh",
+    "note": "For surprise or disbelief. Your tone does the work.",
+    "scene": { "where": "In the kitchen", "mission": "family", "lines": [
+      { "who": "sibling", "es": "Mi mamá hizo cien tamales.", "en": "My mom made a hundred tamales." },
+      { "who": "me", "es": "¿En serio?", "en": "Really?" }
+    ] }
+  },
+  {
+    "id": "f72", "category": "charla", "mission": "both",
+    "es": "¡Qué padre!", "en": "How cool!", "say": "keh PAH-dreh",
+    "note": "Very Mexican. Nothing to do with fathers.",
+    "scene": { "where": "Making plans", "mission": "family", "lines": [
+      { "who": "sibling", "es": "Mañana vamos a la playa.", "en": "Tomorrow we’re going to the beach." },
+      { "who": "me", "es": "¡Qué padre!", "en": "How cool!" }
+    ] }
+  },
+  {
+    "id": "f73", "category": "charla", "mission": "both",
+    "es": "Más o menos.", "en": "So-so.", "say": "MAHS oh MEH-nohs",
+    "note": "Also a modest answer to “do you speak Spanish?”",
+    "scene": { "where": "In a taxi", "mission": "travel", "lines": [
+      { "who": "taxista", "es": "¿Habla español?", "en": "Do you speak Spanish?" },
+      { "who": "me", "es": "Más o menos.", "en": "So-so." }
+    ] }
+  },
+  {
+    "id": "f74", "category": "charla", "mission": "both",
+    "es": "No hay problema.", "en": "No problem.", "say": "noh EYE proh-BLEH-mah",
+    "note": "Mexicans also say no pasa nada.",
+    "scene": { "where": "At a restaurant", "mission": "travel", "lines": [
+      { "who": "mesera", "es": "Perdón, hoy no hay enchiladas.", "en": "Sorry, there are no enchiladas today." },
+      { "who": "me", "es": "No hay problema.", "en": "No problem." }
+    ] }
+  },
+  {
+    "id": "f75", "category": "respeto", "mission": "both",
+    "es": "Perdón.", "en": "Sorry. / Pardon me.", "say": "pehr-DOHN",
+    "note": "For small things: a bump, squeezing past, interrupting.",
+    "scene": { "where": "On a busy sidewalk", "mission": "travel", "lines": [
+      { "who": "me", "es": "¡Ay, perdón!", "en": "Oops, sorry!" },
+      { "who": "local", "es": "No pasa nada.", "en": "No worries." }
+    ] }
+  },
+  {
+    "id": "f76", "category": "direcciones", "mission": "travel",
+    "es": "A la derecha.", "en": "To the right.", "say": "ah lah deh-REH-chah",
+    "note": "You’ll hear it more than you say it, as in: al fondo, a la derecha.",
+    "scene": { "where": "At a restaurant", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿Dónde está el baño?", "en": "Where is the bathroom?" },
+      { "who": "mesera", "es": "Al fondo, a la derecha.", "en": "At the back, on the right." }
+    ] }
+  },
+  {
+    "id": "f77", "category": "direcciones", "mission": "travel",
+    "es": "A la izquierda.", "en": "To the left.", "say": "ah lah ees-KYEHR-dah",
+    "scene": { "where": "On the street", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿Dónde está la farmacia?", "en": "Where is the pharmacy?" },
+      { "who": "local", "es": "En la esquina, a la izquierda.", "en": "On the corner, to the left." }
+    ] }
+  },
+  {
+    "id": "f78", "category": "direcciones", "mission": "travel",
+    "es": "Todo derecho.", "en": "Straight ahead.", "say": "TOH-doh deh-REH-choh",
+    "note": "Careful: derecho = straight, derecha = right. You’ll also hear siga derecho.",
+    "scene": { "where": "Asking directions", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿Dónde está el hotel?", "en": "Where is the hotel?" },
+      { "who": "local", "es": "Todo derecho, dos cuadras.", "en": "Straight ahead, two blocks." }
+    ] }
+  },
+  {
+    "id": "f79", "category": "transporte", "mission": "travel",
+    "es": "¿Cuánto me cobra al aeropuerto?", "en": "How much to the airport?", "say": "KWAHN-toh meh KOH-brah ahl ah-eh-roh-PWEHR-toh", "reg": "usted",
+    "note": "Agree on the price before you get in. Change the place: al centro, al hotel.",
+    "scene": { "where": "Hailing a taxi", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿Cuánto me cobra al aeropuerto?", "en": "How much to the airport?" },
+      { "who": "taxista", "es": "Son trescientos pesos.", "en": "That’s three hundred pesos." }
+    ] }
+  },
+  {
+    "id": "f80", "category": "transporte", "mission": "travel",
+    "es": "Aquí está bien, gracias.", "en": "Here is fine, thanks.", "say": "ah-KEE ehs-TAH BYEHN, GRAH-see-ahs",
+    "note": "Tells the driver to stop here.",
+    "scene": { "where": "In a taxi", "mission": "travel", "lines": [
+      { "who": "taxista", "es": "¿Dónde lo dejo?", "en": "Where should I drop you?" },
+      { "who": "me", "es": "Aquí está bien, gracias.", "en": "Here is fine, thanks." }
+    ] }
+  },
+  {
+    "id": "f81", "category": "familia", "mission": "family",
+    "es": "¿Cómo le fue hoy?", "en": "How was your day?", "say": "KOH-moh leh FWEH OY", "reg": "usted",
+    "note": "To {mom} or {dad}. With {sibling}: ¿cómo te fue?",
+    "scene": { "where": "In the evening", "mission": "family", "lines": [
+      { "who": "me", "es": "¿Cómo le fue hoy, señor?", "en": "How was your day, sir?" },
+      { "who": "dad", "es": "Bien, mucho trabajo.", "en": "Good, lots of work." }
+    ] }
+  },
+  {
+    "id": "f82", "category": "familia", "mission": "both",
+    "es": "¿Cómo está su familia?", "en": "How is your family?", "say": "KOH-moh ehs-TAH soo fah-MEE-lyah", "reg": "usted",
+    "note": "Family comes first in Mexico. Asking this is always kind.",
+    "scene": { "where": "Visiting the neighbors", "mission": "family", "lines": [
+      { "who": "me", "es": "¿Cómo está su familia?", "en": "How is your family?" },
+      { "who": "abuela", "es": "Muy bien, gracias. ¿Y la suya?", "en": "Very well, thanks. And yours?" }
+    ] }
+  },
+  {
+    "id": "f83", "category": "familia", "mission": "family",
+    "es": "Tiene una casa muy bonita.", "en": "You have a lovely home.", "say": "TYEH-neh OO-nah KAH-sah mooy boh-NEE-tah", "reg": "usted",
+    "scene": { "where": "Arriving at the house", "mission": "family", "lines": [
+      { "who": "me", "es": "Señora, tiene una casa muy bonita.", "en": "Ma’am, you have a lovely home." },
+      { "who": "mom", "es": "Gracias, mijo. Es tu casa.", "en": "Thank you, sweetie. It’s your home too." }
+    ] }
+  },
+  {
+    "id": "f84", "category": "familia", "mission": "family",
+    "es": "Yo lavo los trastes.", "en": "I’ll do the dishes.", "say": "yoh LAH-voh lohs TRAHS-tehs",
+    "note": "Trastes = dishes in Mexico. They’ll probably say no. Offer anyway.",
+    "scene": { "where": "After dinner", "mission": "family", "lines": [
+      { "who": "mom", "es": "Deja eso, mijo.", "en": "Leave that, sweetie." },
+      { "who": "me", "es": "No, no. Yo lavo los trastes.", "en": "No, no. I’ll do the dishes." }
+    ] }
+  },
+  {
+    "id": "f85", "category": "gracias", "mission": "family",
+    "es": "Muchas gracias por la invitación.", "en": "Thank you so much for having me.", "say": "MOO-chahs GRAH-see-ahs por lah een-vee-tah-SYOHN",
+    "scene": { "where": "Saying goodbye", "mission": "family", "lines": [
+      { "who": "me", "es": "Muchas gracias por la invitación.", "en": "Thank you so much for having me." },
+      { "who": "dad", "es": "Aquí siempre eres bienvenido.", "en": "You’re always welcome here." }
+    ] }
+  },
+  {
+    "id": "f86", "category": "charla", "mission": "both",
+    "es": "Me gusta mucho la comida mexicana.", "en": "I really like Mexican food.", "say": "meh GOOS-tah MOO-choh lah koh-MEE-dah meh-hee-KAH-nah",
+    "note": "Change the end: me gusta mucho el café, me gusta mucho aquí.",
+    "scene": { "where": "At the dinner table", "mission": "family", "lines": [
+      { "who": "mom", "es": "¿Te gusta la comida mexicana?", "en": "Do you like Mexican food?" },
+      { "who": "me", "es": "¡Sí! Me gusta mucho la comida mexicana.", "en": "Yes! I really like Mexican food." }
+    ] }
+  },
+  {
+    "id": "f87", "category": "charla", "mission": "both",
+    "es": "¿Le gusta el fútbol?", "en": "Do you like soccer?", "say": "leh GOOS-tah el FOOT-bohl", "reg": "usted",
+    "note": "Change the thing: ¿le gusta el café? With {sibling}: ¿te gusta…?",
+    "scene": { "where": "Watching TV", "mission": "family", "lines": [
+      { "who": "me", "es": "¿Le gusta el fútbol, señor?", "en": "Do you like soccer, sir?" },
+      { "who": "dad", "es": "¡Me encanta! Soy de las Chivas.", "en": "I love it! I’m a Chivas fan." }
+    ] }
+  },
+  {
+    "id": "f88", "category": "charla", "mission": "both",
+    "es": "Tengo {age} años.", "en": "I’m {age}.", "say": "TEHN-goh {age} AH-nyohs",
+    "note": "Literally “I have {age} years.” Your age comes from Settings → Nombres.",
+    "scene": { "where": "Meeting the grandmother", "mission": "family", "lines": [
+      { "who": "abuela", "es": "¿Y cuántos años tienes, mijo?", "en": "And how old are you, dear?" },
+      { "who": "me", "es": "Tengo {age} años.", "en": "I’m {age}." }
+    ] }
+  },
+  {
+    "id": "f89", "category": "sentimientos", "mission": "both",
+    "es": "Estoy cansado.", "en": "I’m tired.", "say": "ehs-TOY kahn-SAH-doh",
+    "note": "Really tired: muy cansado.",
+    "scene": { "where": "After a long day", "mission": "family", "lines": [
+      { "who": "partner", "es": "¿Estás bien?", "en": "Are you okay?" },
+      { "who": "me", "es": "Sí, solo estoy cansado.", "en": "Yes, I’m just tired." }
+    ] }
+  },
+  {
+    "id": "f90", "category": "sentimientos", "mission": "family",
+    "es": "Estoy muy contento.", "en": "I’m really happy.", "say": "ehs-TOY mooy kohn-TEHN-toh",
+    "note": "Say it at the table. It tells them you’re glad to be there.",
+    "scene": { "where": "At the dinner table", "mission": "family", "lines": [
+      { "who": "mom", "es": "¿Estás a gusto aquí?", "en": "Are you comfortable here?" },
+      { "who": "me", "es": "Sí, estoy muy contento.", "en": "Yes, I’m really happy." }
+    ] }
+  },
+  {
+    "id": "f91", "category": "transporte", "mission": "travel",
+    "es": "¿A qué hora sale el autobús?", "en": "What time does the bus leave?", "say": "ah KEH OH-rah SAH-leh el ow-toh-BOOS",
+    "note": "Long-distance buses in Mexico are comfortable and leave on time.",
+    "scene": { "where": "At the bus station", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿A qué hora sale el autobús?", "en": "What time does the bus leave?" },
+      { "who": "vendedora", "es": "Sale a las tres.", "en": "It leaves at three." }
+    ] }
+  },
+  {
+    "id": "f92", "category": "transporte", "mission": "travel",
+    "es": "¿Dónde está la parada?", "en": "Where is the (bus) stop?", "say": "DOHN-deh ehs-TAH lah pah-RAH-dah",
+    "scene": { "where": "On the street", "mission": "travel", "lines": [
+      { "who": "me", "es": "Disculpe, ¿dónde está la parada?", "en": "Excuse me, where is the stop?" },
+      { "who": "local", "es": "Ahí enfrente.", "en": "Right across there." }
+    ] }
+  },
+  {
+    "id": "f93", "category": "compras", "mission": "travel",
+    "es": "¿A qué hora abren?", "en": "What time do you open?", "say": "ah KEH OH-rah AH-brehn", "reg": "ustedes",
+    "note": "And to ask when they close: ¿a qué hora cierran?",
+    "scene": { "where": "At a shop", "mission": "travel", "lines": [
+      { "who": "me", "es": "¿A qué hora abren mañana?", "en": "What time do you open tomorrow?" },
+      { "who": "vendedora", "es": "A las nueve.", "en": "At nine." }
+    ] }
+  },
+  {
+    "id": "f94", "category": "tiempo", "mission": "both",
+    "es": "Son las tres y media.", "en": "It’s three-thirty.", "say": "sohn lahs TREHS ee MEH-dyah",
+    "note": "Y media = half past. Y cuarto = quarter past.",
+    "scene": { "where": "At the family’s house", "mission": "family", "lines": [
+      { "who": "me", "es": "¿Qué hora es?", "en": "What time is it?" },
+      { "who": "partner", "es": "Son las tres y media.", "en": "It’s three-thirty." }
+    ] }
+  },
+  {
+    "id": "f95", "category": "tiempo", "mission": "both",
+    "es": "Nos vemos a las ocho.", "en": "See you at eight.", "say": "nohs VEH-mohs ah lahs OH-choh",
+    "note": "Parties run on relaxed time. Buses don’t.",
+    "scene": { "where": "Making plans", "mission": "family", "lines": [
+      { "who": "sibling", "es": "¿Vamos al cine mañana?", "en": "Should we go to the movies tomorrow?" },
+      { "who": "me", "es": "Sí. Nos vemos a las ocho.", "en": "Yes. See you at eight." }
+    ] }
+  },
+  {
+    "id": "f96", "category": "emergencias", "mission": "travel",
+    "es": "Llame a la policía.", "en": "Call the police.", "say": "YAH-meh ah lah poh-lee-SEE-ah", "reg": "usted",
+    "note": "Or call 911 yourself.",
+    "scene": { "where": "At the hotel", "mission": "travel", "lines": [
+      { "who": "me", "es": "¡Ayuda! Llame a la policía.", "en": "Help! Call the police." },
+      { "who": "recepcionista", "es": "Sí, ahorita llamo.", "en": "Yes, I’m calling right now." }
+    ] }
+  },
+  {
+    "id": "f97", "category": "emergencias", "mission": "travel",
+    "es": "Perdí mi pasaporte.", "en": "I lost my passport.", "say": "pehr-DEE mee pah-sah-POR-teh",
+    "note": "Change the thing: perdí mi cartera (wallet), perdí mi teléfono.",
+    "scene": { "where": "At the hotel desk", "mission": "travel", "lines": [
+      { "who": "recepcionista", "es": "¿Qué le pasó?", "en": "What happened?" },
+      { "who": "me", "es": "Perdí mi pasaporte.", "en": "I lost my passport." }
+    ] }
+  },
+  {
+    "id": "f98", "category": "compras", "mission": "travel",
+    "es": "¿Me lo deja en cien?", "en": "Would you let it go for 100?", "say": "meh loh DEH-hah ehn SYEHN", "reg": "usted",
+    "note": "Friendly bargaining is normal at markets, not in stores or restaurants.",
+    "scene": { "where": "At the market", "mission": "travel", "lines": [
+      { "who": "vendedora", "es": "Son ciento cincuenta.", "en": "That’s a hundred and fifty." },
+      { "who": "me", "es": "¿Me lo deja en cien?", "en": "Would you let it go for a hundred?" }
+    ] }
+  },
+  {
+    "id": "f99", "category": "hotel", "mission": "travel",
+    "es": "Quisiera hacer una reservación.", "en": "I’d like to make a reservation.", "say": "kee-SYEH-rah ah-SEHR OO-nah reh-sehr-vah-SYOHN",
+    "scene": { "where": "Calling a hotel", "mission": "travel", "lines": [
+      { "who": "me", "es": "Quisiera hacer una reservación para el sábado.", "en": "I’d like to make a reservation for Saturday." },
+      { "who": "recepcionista", "es": "Claro. ¿Para cuántas personas?", "en": "Of course. For how many people?" }
+    ] }
+  },
+  {
+    "id": "f100", "category": "gracias", "mission": "both",
+    "es": "Con mucho gusto.", "en": "With pleasure.", "say": "kohn MOO-choh GOOS-toh",
+    "note": "A warm “my pleasure,” very common in Mexico after someone thanks you.",
+    "scene": { "where": "In the kitchen", "mission": "family", "lines": [
+      { "who": "mom", "es": "Gracias por lavar los trastes.", "en": "Thanks for doing the dishes." },
+      { "who": "me", "es": "Con mucho gusto.", "en": "With pleasure." }
+    ] }
   }
 ]

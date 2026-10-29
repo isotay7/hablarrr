@@ -9,7 +9,7 @@ import { onVoicesChanged, pickVoice, speak, spanishVoices, speechSupported } fro
 import { sfx } from "@/lib/sounds";
 import { useStore } from "@/lib/store";
 import { characters } from "@/content";
-import { DEFAULT_NAMES, ROLE_LABELS, ROLES, type Names } from "@/content/people";
+import { DEFAULT_NAMES, FIELDS, ROLE_LABELS, type Names } from "@/content/people";
 
 export default function SettingsPage() {
   const { ready, data, updateSettings, exportJSON, importJSON, startHereDone } = useStore();
@@ -213,24 +213,25 @@ export default function SettingsPage() {
 
 function NamesGroup({ saved, onSave }: { saved: Partial<Names>; onSave: (names: Partial<Names>) => void }) {
   const [draft, setDraft] = useState<Partial<Names>>(saved);
-  const changed = ROLES.some((r) => (draft[r] ?? "").trim() !== (saved[r] ?? "").trim());
+  const changed = FIELDS.some((r) => (draft[r] ?? "").trim() !== (saved[r] ?? "").trim());
 
   return (
     <Group title="Nombres">
       <p className="text-[15px] leading-snug text-muted">
-        The dialogues use these names. They stay on this device and never go to GitHub or anywhere else.
+        The dialogues and phrases use these names and details. They stay on this device and never go to GitHub or
+        anywhere else.
       </p>
       <form
         className="flex flex-col gap-3"
         onSubmit={(e) => {
           e.preventDefault();
           const clean: Partial<Names> = {};
-          for (const r of ROLES) if (draft[r]?.trim()) clean[r] = draft[r]!.trim();
+          for (const r of FIELDS) if (draft[r]?.trim()) clean[r] = draft[r]!.trim();
           onSave(clean);
         }}
       >
         <div className="grid gap-3 sm:grid-cols-2">
-          {ROLES.map((r) => (
+          {FIELDS.map((r) => (
             <label key={r} className="flex flex-col gap-1.5">
               <span className="text-[15px] font-bold">{ROLE_LABELS[r]}</span>
               <input
@@ -239,6 +240,7 @@ function NamesGroup({ saved, onSave }: { saved: Partial<Names>; onSave: (names: 
                 placeholder={DEFAULT_NAMES[r]}
                 autoComplete="off"
                 autoCapitalize="words"
+                inputMode={r === "age" ? "numeric" : undefined}
                 onChange={(e) => setDraft({ ...draft, [r]: e.target.value })}
                 className="h-12 rounded-2xl border border-line bg-bg px-4 text-[17px] outline-none focus:border-accent"
               />
