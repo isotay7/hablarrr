@@ -18,9 +18,20 @@ import {
   type Snapshot,
   type WordRecord,
   type WordStatus,
+  withProgressDefaults,
 } from "./db";
 import { dayKey, isoWeek } from "./dates";
-import { KNOWN_STABILITY_DAYS, newFsrs, rate, Rating, type Grade } from "./srs";
+import {
+  DEFAULT_PROGRESS,
+  EMPTY_DAY,
+  gameReward,
+  isBetter,
+  REWARD,
+  type GameResult,
+  type GameStats,
+  type Progress,
+} from "./progress";
+import { isDue, KNOWN_STABILITY_DAYS, newFsrs, rate, Rating, type Grade } from "./srs";
 import { setSoundEnabled } from "./sounds";
 import { stage1Started } from "./stats";
 import { sentenceKeys } from "./tokenize";
@@ -50,6 +61,13 @@ interface Actions {
   recordMission(score: number, total: number): void;
   /** Finishes a Start Here loop: adds the phrase to the deck, rated by the quiz. */
   learnPhrase(id: string, quizCorrect: boolean): void;
+  /**
+   * A game answer. A miss brings the phrase back soon; a hit only counts when the
+   * phrase was due anyway, so games never push reviews further out than they should.
+   */
+  practice(id: string, correct: boolean): void;
+  /** Saves a finished game and pays out. Returns what was earned. */
+  recordGame(result: GameResult): { pesos: number; xp: number; best: boolean };
   exportJSON(): string;
   importJSON(json: string): Promise<void>;
 }
@@ -64,6 +82,7 @@ interface StoreValue extends Actions {
 
 const EMPTY: Snapshot = {
   settings: DEFAULT_SETTINGS,
+  progress: DEFAULT_PROGRESS,
   deck: [],
   reviews: [],
   words: [],
@@ -168,6 +187,21 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       return upsert(s.days, next, (d) => d.date === key);
     };
 
+    const saveProgress = (s: Snapshot, progress: Progress): Snapshot => {
+      const next = { ...progress, updatedAt: Date.now() };
+      db()
+        .then((d) => d.put("kv", next, "progress"))
+        .catch((e) => console.error("save failed", "progress", e));
+      return { ...s, progress: next };
+    };
+
+    const pay = (p: Progress, r: { pesos: number; xp: number }): Progress => ({
+      ...p,
+      pesos: p.pesos + r.pesos,
+      earned: p.earned + r.pesos,
+      xp: p.xp + r.xp,
+    });
+
     const api: Actions = {
       updateSettings(patch) {
         const s = ref.current;
@@ -232,7 +266,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
           const target: WordStatus = fsrs.stability >= KNOWN_STABILITY_DAYS ? "known" : "learning";
           next = { ...next, words: promoteWords(next, card.es, target) };
         }
-        commit(next);
+        commit(saveProgress(next, pay(next.progress, REWARD.review)));
       },
 
       setWordStatus(key, status) {
@@ -300,6 +334,48 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         }
         // The quiz is the first review: right comes back tomorrow-ish, wrong comes back soon.
         api.rateCard(id, quizCorrect ? Rating.Good : Rating.Again);
+        commit(saveProgress(ref.current, pay(ref.current.progress, REWARD.phrase)));
+      },
+
+      practice(id, correct) {
+        const card = ref.current.deck.find((c) => c.id === id);
+        if (!card) return;
+        if (!correct) api.rateCard(id, Rating.Again);
+        else if (isDue(card)) api.rateCard(id, Rating.Good);
+      },
+
+      recordGame(result) {
+        const s = ref.current;
+        const key = dayKey();
+        const reward = gameReward(result);
+        const prev = s.progress.games[result.game];
+        const best = isBetter(result.game, result.score, prev?.best);
+        const stats: GameStats = {
+          plays: (prev?.plays ?? 0) + 1,
+          best: best ? result.score : (prev?.best ?? 0),
+          wins: (prev?.wins ?? 0) + (result.won ? 1 : 0),
+          perfect: (prev?.perfect ?? 0) + (result.perfect ? 1 : 0),
+          lastPlayed: Date.now(),
+        };
+        const day = s.progress.daily[key] ?? EMPTY_DAY;
+        const progress = pay(
+          {
+            ...s.progress,
+            games: { ...s.progress.games, [result.game]: stats },
+            daily: {
+              ...s.progress.daily,
+              [key]: {
+                ...day,
+                games: day.games + 1,
+                gameIds: [...day.gameIds, result.game],
+                correct: day.correct + result.correct,
+              },
+            },
+          },
+          reward,
+        );
+        commit(saveProgress(s, progress));
+        return { ...reward, best };
       },
 
       exportJSON() {
@@ -313,7 +389,12 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       async importJSON(json) {
         const parsed = JSON.parse(json);
         if (parsed?.app !== "hablarrr" || !parsed.data) throw new Error("This doesn’t look like a Hablarrr backup.");
-        const snap: Snapshot = { ...EMPTY, ...parsed.data, settings: { ...DEFAULT_SETTINGS, ...parsed.data.settings } };
+        const snap: Snapshot = {
+          ...EMPTY,
+          ...parsed.data,
+          settings: { ...DEFAULT_SETTINGS, ...parsed.data.settings },
+          progress: withProgressDefaults(parsed.data.progress),
+        };
         await replaceAll(snap);
         applyNames(resolveNames(snap.settings.names));
         setNamesVersion((v) => v + 1);

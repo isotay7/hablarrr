@@ -13,6 +13,7 @@ const TABS: { href: string; label: string; icon: IconName }[] = [
   { href: "/", label: "Hoy", icon: "home" },
   { href: "/chill", label: "Chill", icon: "feed" },
   { href: "/leer", label: "Leer", icon: "book" },
+  { href: "/jugar", label: "Jugar", icon: "games" },
   { href: "/repasar", label: "Repasar", icon: "deck" },
   { href: "/progreso", label: "Progreso", icon: "rings" },
 ];
@@ -24,7 +25,7 @@ export function TabBar() {
 
   return (
     <nav aria-label="Main" className="pb-safe shrink-0 border-t border-line bg-nav">
-      <ul className="mx-auto grid h-[76px] max-w-3xl grid-cols-5 px-2">
+      <ul className="mx-auto grid h-[76px] max-w-3xl grid-cols-6 px-1">
         {TABS.map((t) => {
           const active = t.href === "/" ? pathname === "/" : pathname.startsWith(t.href);
           return (

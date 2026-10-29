@@ -1,6 +1,7 @@
 import { openDB, type DBSchema, type IDBPDatabase } from "idb";
 import type { Names } from "@/content/people";
 import type { Register } from "@/content/types";
+import { DEFAULT_PROGRESS, type Progress } from "./progress";
 
 // Every record carries updatedAt so Phase 3 can sync by last-write-wins.
 
@@ -143,6 +144,7 @@ export const DEFAULT_SETTINGS: Settings = {
 
 export interface Snapshot {
   settings: Settings;
+  progress: Progress;
   deck: DeckCard[];
   reviews: ReviewLogRecord[];
   words: WordRecord[];
@@ -153,8 +155,9 @@ export interface Snapshot {
 
 export async function loadAll(): Promise<Snapshot> {
   const d = await db();
-  const [settings, deck, reviews, words, reading, days, missions] = await Promise.all([
+  const [settings, progress, deck, reviews, words, reading, days, missions] = await Promise.all([
     d.get("kv", "settings") as Promise<Settings | undefined>,
+    d.get("kv", "progress") as Promise<Progress | undefined>,
     d.getAll("deck"),
     d.getAll("reviews"),
     d.getAll("words"),
@@ -164,6 +167,7 @@ export async function loadAll(): Promise<Snapshot> {
   ]);
   return {
     settings: { ...DEFAULT_SETTINGS, ...settings },
+    progress: withProgressDefaults(progress),
     deck,
     reviews,
     words,
@@ -185,6 +189,7 @@ export async function replaceAll(s: Snapshot) {
     tx.objectStore("missions").clear(),
   ]);
   await tx.objectStore("kv").put(s.settings, "settings");
+  await tx.objectStore("kv").put(s.progress, "progress");
   for (const c of s.deck) await tx.objectStore("deck").put(c);
   for (const r of s.reviews) await tx.objectStore("reviews").put(r);
   for (const w of s.words) await tx.objectStore("words").put(w);
@@ -192,6 +197,15 @@ export async function replaceAll(s: Snapshot) {
   for (const day of s.days) await tx.objectStore("days").put(day);
   for (const m of s.missions) await tx.objectStore("missions").put(m);
   await tx.done;
+}
+
+/** Older saves and backups have no progress, or miss newer fields. */
+export function withProgressDefaults(p?: Partial<Progress>): Progress {
+  return {
+    ...DEFAULT_PROGRESS,
+    ...p,
+    equipped: { ...DEFAULT_PROGRESS.equipped, ...p?.equipped },
+  };
 }
 
 /** Ask the browser not to evict our data. Best effort. */

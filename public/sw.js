@@ -2,7 +2,7 @@
 // Pages: network first, falling back to the cached copy.
 // Build assets (_next/static): cache first, they never change.
 
-const VERSION = "v3";
+const VERSION = "v4";
 const PAGES = `pages-${VERSION}`;
 const ASSETS = `assets-${VERSION}`;
 
@@ -14,6 +14,7 @@ const LESSONS = [
   ...["t01", "t02", "t03", "t04", "t05", "t06"],
   ...["s01", "s02", "s03"],
 ];
+const GAMES = ["escucha", "arma", "rayo"];
 const PRECACHE = [
   "",
   "empezar/",
@@ -25,6 +26,8 @@ const PRECACHE = [
   "enfoque/",
   "mision/",
   "ajustes/",
+  "jugar/",
+  ...GAMES.map((id) => `jugar/${id}/`),
   ...LESSONS.map((id) => `leer/${id}/`),
   "manifest.webmanifest",
   "icons/icon-192.png",
