@@ -1,6 +1,8 @@
 // Checks every lesson and phrase: unique ids, required fields, and a meaning for every word.
 // Run with: npm run check:content
 import { characters, lessons, lexicon, missionQuestions, phrases } from "../src/content";
+import { expandRef, MEN } from "../src/content/faith/men";
+import faithTexts from "../src/content/faith/texts.json";
 import { tokenize } from "../src/lib/tokenize";
 
 const problems: string[] = [];
@@ -60,6 +62,24 @@ for (const lesson of lessons) {
 for (const q of missionQuestions) {
   if (q.mission !== "family" && q.mission !== "travel") problems.push(`${q.id}: mission must be family or travel`);
 }
+// The Fe path: every verse it shows must be in texts.json (built by scripts/faith-texts.ts).
+const verses = faithTexts as Record<string, { en: string; es: string }>;
+let faithDays = 0;
+for (const m of MEN) {
+  checkId(`fe:${m.id}`);
+  if (m.days.length < 3 || m.days.length > 5) problems.push(`fe:${m.id}: needs 3–5 days`);
+  for (const d of m.days) {
+    faithDays++;
+    if (d.facts.length < 4 || d.facts.length > 6) problems.push(`fe:${m.id} “${d.title}”: needs 4–6 facts`);
+    if (!d.question.trim()) problems.push(`fe:${m.id} “${d.title}”: no question`);
+    for (const ref of [d.read, ...(d.verse ? [d.verse.ref] : [])])
+      for (const k of expandRef(ref)) if (!verses[k]) problems.push(`fe:${m.id}: ${k} missing from texts.json`);
+  }
+  for (const k of expandRef(m.recap.verse.ref)) if (!verses[k]) problems.push(`fe:${m.id} recap: ${k} missing`);
+  if (!m.recap.timeline.length || !m.recap.strengths.length || !m.recap.failures.length)
+    problems.push(`fe:${m.id}: recap needs a timeline, strengths and failures`);
+}
+
 for (const [key, where] of missing) problems.push(`no meaning for "${key}" (${where})`);
 
 const wordCount = Object.keys(lexicon).length;
@@ -68,4 +88,6 @@ if (problems.length) {
   console.error(`\n${problems.length} problem(s).`);
   process.exit(1);
 }
-console.log(`Content OK: ${lessons.length} lessons, ${phrases.length} phrases, ${wordCount} glossed words.`);
+console.log(
+  `Content OK: ${lessons.length} lessons, ${phrases.length} phrases, ${wordCount} glossed words, ${MEN.length} men / ${faithDays} faith readings.`,
+);

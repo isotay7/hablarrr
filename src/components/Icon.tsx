@@ -1,4 +1,12 @@
 const paths = {
+  candle: (
+    <>
+      <path d="M8.5 22V12h7v10" />
+      <path d="M6 22h12" />
+      <path d="M12 12v-2" />
+      <path d="M12 2c2 2.6 3 4 3 5.3a3 3 0 0 1-6 0C9 6 10 4.6 12 2z" />
+    </>
+  ),
   home: (
     <>
       <path d="M3 11l9-7 9 7" />

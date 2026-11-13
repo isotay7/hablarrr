@@ -6,6 +6,7 @@ import { resolveNames } from "@/content/people";
 import type { Register } from "@/content/types";
 import {
   db,
+  DEFAULT_FAITH,
   DEFAULT_SETTINGS,
   loadAll,
   replaceAll,
@@ -66,6 +67,8 @@ interface Actions {
    * phrase was due anyway, so games never push reviews further out than they should.
    */
   practice(id: string, correct: boolean): void;
+  /** Marks a Fe reading done tonight. Returns true the first time. */
+  finishFaithDay(id: string): boolean;
   /** Saves a finished game and pays out. Returns what was earned. */
   recordGame(result: GameResult): { pesos: number; xp: number; best: boolean };
   exportJSON(): string;
@@ -83,6 +86,7 @@ interface StoreValue extends Actions {
 const EMPTY: Snapshot = {
   settings: DEFAULT_SETTINGS,
   progress: DEFAULT_PROGRESS,
+  faith: DEFAULT_FAITH,
   deck: [],
   reviews: [],
   words: [],
@@ -344,6 +348,17 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         else if (isDue(card)) api.rateCard(id, Rating.Good);
       },
 
+      finishFaithDay(id) {
+        const s = ref.current;
+        if (s.faith.done[id]) return false;
+        const faith = { done: { ...s.faith.done, [id]: dayKey() }, updatedAt: Date.now() };
+        db()
+          .then((d) => d.put("kv", faith, "faith"))
+          .catch((e) => console.error("save failed", "faith", e));
+        commit({ ...s, faith });
+        return true;
+      },
+
       recordGame(result) {
         const s = ref.current;
         const key = dayKey();
@@ -394,6 +409,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
           ...parsed.data,
           settings: { ...DEFAULT_SETTINGS, ...parsed.data.settings },
           progress: withProgressDefaults(parsed.data.progress),
+          faith: { ...DEFAULT_FAITH, ...parsed.data.faith },
         };
         await replaceAll(snap);
         applyNames(resolveNames(snap.settings.names));

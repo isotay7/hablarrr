@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Figtree } from "next/font/google";
+import { Bricolage_Grotesque, Figtree, Lora } from "next/font/google";
 import { BASE } from "@/lib/base";
 import { AppProvider } from "@/lib/store";
 import { AppShell } from "@/components/AppShell";
@@ -13,6 +13,13 @@ const bricolage = Bricolage_Grotesque({
 const figtree = Figtree({
   variable: "--font-figtree",
   subsets: ["latin"],
+});
+
+// Scripture in the Fe section reads in a calm serif.
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -48,7 +55,7 @@ export default function RootLayout({
       lang="es-MX"
       data-theme="night"
       suppressHydrationWarning
-      className={`${bricolage.variable} ${figtree.variable} h-full`}
+      className={`${bricolage.variable} ${figtree.variable} ${lora.variable} h-full`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

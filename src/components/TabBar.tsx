@@ -14,6 +14,7 @@ const TABS: { href: string; label: string; icon: IconName }[] = [
   { href: "/chill", label: "Chill", icon: "feed" },
   { href: "/leer", label: "Leer", icon: "book" },
   { href: "/jugar", label: "Jugar", icon: "games" },
+  { href: "/fe", label: "Fe", icon: "candle" },
   { href: "/repasar", label: "Repasar", icon: "deck" },
   { href: "/progreso", label: "Progreso", icon: "rings" },
 ];
@@ -25,7 +26,7 @@ export function TabBar() {
 
   return (
     <nav aria-label="Main" className="pb-safe shrink-0 border-t border-line bg-nav">
-      <ul className="mx-auto grid h-[76px] max-w-3xl grid-cols-6 px-1">
+      <ul className="mx-auto grid h-[76px] max-w-3xl grid-cols-7 px-1">
         {TABS.map((t) => {
           const active = t.href === "/" ? pathname === "/" : pathname.startsWith(t.href);
           return (
@@ -34,14 +35,14 @@ export function TabBar() {
                 href={t.href}
                 aria-current={active ? "page" : undefined}
                 onClick={() => sfx.tap()}
-                className={`relative flex h-full flex-col items-center justify-center gap-1 text-[13px] ${
+                className={`relative flex h-full flex-col items-center justify-center gap-1 text-[12px] sm:text-[13px] ${
                   active ? "font-bold text-accent-text" : "font-semibold text-muted"
                 }`}
               >
                 {active && (
                   <motion.span
                     layoutId="tab-pill"
-                    className="absolute top-2 h-9 w-14 rounded-full bg-learn"
+                    className="absolute top-2 h-9 w-12 rounded-full bg-learn sm:w-14"
                     transition={{ type: "spring", stiffness: 500, damping: 38 }}
                   />
                 )}

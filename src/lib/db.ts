@@ -34,7 +34,7 @@ export interface StoredFsrs {
   last_review: number | null;
 }
 
-export type CardSource = "phrase" | "dialogue" | "story";
+export type CardSource = "phrase" | "dialogue" | "story" | "verse";
 
 export interface DeckCard {
   /** Same as the phrase or line id it came from. */
@@ -99,6 +99,15 @@ export interface MissionCheckRecord {
   takenAt: number;
 }
 
+/** The Fe path: which nightly readings are done, and on which local date. */
+export interface FaithState {
+  /** Day id ("adan-1") → local date it was first finished (YYYY-MM-DD). */
+  done: Record<string, string>;
+  updatedAt: number;
+}
+
+export const DEFAULT_FAITH: FaithState = { done: {}, updatedAt: 0 };
+
 interface HablarrrDB extends DBSchema {
   kv: { key: string; value: unknown };
   deck: { key: string; value: DeckCard; indexes: { due: number } };
@@ -145,6 +154,7 @@ export const DEFAULT_SETTINGS: Settings = {
 export interface Snapshot {
   settings: Settings;
   progress: Progress;
+  faith: FaithState;
   deck: DeckCard[];
   reviews: ReviewLogRecord[];
   words: WordRecord[];
@@ -155,9 +165,10 @@ export interface Snapshot {
 
 export async function loadAll(): Promise<Snapshot> {
   const d = await db();
-  const [settings, progress, deck, reviews, words, reading, days, missions] = await Promise.all([
+  const [settings, progress, faith, deck, reviews, words, reading, days, missions] = await Promise.all([
     d.get("kv", "settings") as Promise<Settings | undefined>,
     d.get("kv", "progress") as Promise<Progress | undefined>,
+    d.get("kv", "faith") as Promise<FaithState | undefined>,
     d.getAll("deck"),
     d.getAll("reviews"),
     d.getAll("words"),
@@ -168,6 +179,7 @@ export async function loadAll(): Promise<Snapshot> {
   return {
     settings: { ...DEFAULT_SETTINGS, ...settings },
     progress: withProgressDefaults(progress),
+    faith: { ...DEFAULT_FAITH, ...faith },
     deck,
     reviews,
     words,
@@ -190,6 +202,7 @@ export async function replaceAll(s: Snapshot) {
   ]);
   await tx.objectStore("kv").put(s.settings, "settings");
   await tx.objectStore("kv").put(s.progress, "progress");
+  await tx.objectStore("kv").put(s.faith, "faith");
   for (const c of s.deck) await tx.objectStore("deck").put(c);
   for (const r of s.reviews) await tx.objectStore("reviews").put(r);
   for (const w of s.words) await tx.objectStore("words").put(w);

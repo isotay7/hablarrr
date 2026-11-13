@@ -4,12 +4,14 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { characters, lessonLabel, lessons, phrases, STAGE1_TOTAL, STAGE2_GOAL } from "@/content";
+import { TonightCard } from "@/components/faith/TonightCard";
 import { Icon } from "@/components/Icon";
 import { SegmentMeter } from "@/components/Meters";
 import { PapelPicado } from "@/components/PapelPicado";
 import { SaveButton } from "@/components/SaveButton";
 import { CandleGlow, Kicker, Loading, MissionChip, RoundButton, SoundToggle, ThemeToggle } from "@/components/ui";
 import { dayKey, greeting, isoWeek } from "@/lib/dates";
+import { tonight } from "@/lib/faith";
 import { usePlayer } from "@/lib/player";
 import { hasMexicanVoice, onVoicesChanged, speechSupported } from "@/lib/speech";
 import { isDue } from "@/lib/srs";
@@ -45,6 +47,7 @@ export default function Home() {
   const nights = streak(data.days);
   const checkedThisWeek = data.missions.find((m) => m.week === isoWeek());
   const known = wordsKnown(data.words);
+  const phrasesDone = startHere(data.deck);
 
   const open = unlocks(data.deck);
   const readable = lessons.filter((l) => (l.kind === "story" ? open.stories : true));
@@ -89,6 +92,13 @@ export default function Home() {
         <motion.div {...rise(1)}>
           <StartHereCard />
         </motion.div>
+
+        {/* Faith reading shows up only after the day's phrases, so Spanish stays first. */}
+        {(phrasesDone.doneToday || phrasesDone.finished) && tonight(data.faith).open && (
+          <motion.div {...rise(2)}>
+            <TonightCard compact />
+          </motion.div>
+        )}
 
         <motion.div {...rise(2)}>
           <Link
