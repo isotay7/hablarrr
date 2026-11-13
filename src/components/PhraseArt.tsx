@@ -199,6 +199,18 @@ const ART: Record<string, { bg: string; fg: string; draw: React.ReactNode }> = {
       </>
     ),
   },
+  fe: {
+    bg: "#6B4E8A",
+    fg: "#F7F0FF",
+    draw: (
+      <>
+        <path d="M18 40V22h12v18" />
+        <path d="M12 40h24" />
+        <path d="M24 22v-4" />
+        <path d="M24 6c3 4 4 6 4 8a4 4 0 0 1-8 0c0-2 1-4 4-8z" />
+      </>
+    ),
+  },
 };
 
 const FALLBACK = ART.charla;

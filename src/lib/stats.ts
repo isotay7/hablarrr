@@ -86,11 +86,24 @@ export interface StartHere {
   finished: boolean;
 }
 
+/** Prayer phrases ("Familia" at the table) mix in at one a day, so dinner phrases keep their pace. */
+const FAITH_IDS = new Set(phrases.filter((p) => p.category === "fe").map((p) => p.id));
+
+/** Today's new phrases: the next ones in order, with at most one prayer phrase, last. */
+function nextPhrases(remaining: Phrase[], room: number, faithToday: boolean): Phrase[] {
+  const regular = remaining.filter((p) => !FAITH_IDS.has(p.id));
+  const faith = remaining.filter((p) => FAITH_IDS.has(p.id));
+  if (!regular.length) return faith.slice(0, room);
+  if (!faith.length || faithToday || room === 0) return regular.slice(0, room);
+  return [...regular.slice(0, room - 1), faith[0]];
+}
+
 export function startHere(deck: DeckCard[], { extra = false, now = new Date() } = {}): StartHere {
   const cards = deck.filter((c) => c.stage1 && STAGE1_IDS.has(c.id));
   const have = new Set(cards.map((c) => c.id));
   const todayKey = dayKey(now);
-  const today = cards.filter((c) => dayKey(new Date(c.createdAt)) === todayKey).length;
+  const todayCards = cards.filter((c) => dayKey(new Date(c.createdAt)) === todayKey);
+  const today = todayCards.length;
   const days = new Set(cards.map((c) => dayKey(new Date(c.createdAt))));
   days.add(todayKey);
   const remaining = phrases.filter((p) => !have.has(p.id));
@@ -99,7 +112,7 @@ export function startHere(deck: DeckCard[], { extra = false, now = new Date() } 
     started: cards.length,
     today,
     day: days.size,
-    next: remaining.slice(0, room),
+    next: nextPhrases(remaining, room, todayCards.some((c) => FAITH_IDS.has(c.id))),
     doneToday: today >= NEW_PER_DAY || remaining.length === 0,
     finished: remaining.length === 0,
   };

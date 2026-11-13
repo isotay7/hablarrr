@@ -81,7 +81,9 @@ export type PhraseCategory =
   | "tiempo"
   | "charla"
   | "sentimientos"
-  | "emergencias";
+  | "emergencias"
+  /** Prayer phrases for the family table. One a day at most in Start Here. */
+  | "fe";
 
 export interface SceneLine {
   who: CharacterId;

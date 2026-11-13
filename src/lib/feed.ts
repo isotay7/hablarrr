@@ -40,6 +40,7 @@ const CATEGORY_LABEL: Record<string, string> = {
   compras: "shopping",
   salud: "health",
   tiempo: "time",
+  fe: "at the family table",
 };
 
 function lineCard(lessonId: string, lessonTitle: string, kind: "dialogue" | "story", l: Line): NewCardInput {

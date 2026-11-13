@@ -870,5 +870,122 @@
       { "who": "mom", "es": "Gracias por lavar los trastes.", "en": "Thanks for doing the dishes." },
       { "who": "me", "es": "Con mucho gusto.", "en": "With pleasure." }
     ] }
+  },
+  {
+    "id": "fe01", "category": "fe", "mission": "family",
+    "es": "Vamos a orar.", "en": "Let’s pray.", "say": "BAH-mohs ah oh-RAHR",
+    "note": "Said before grace or a family prayer. Many Mexican families say “Vamos a rezar.” Both are right.",
+    "scene": { "where": "Before dinner", "mission": "family", "lines": [
+      { "who": "dad", "es": "Antes de comer, vamos a orar.", "en": "Before we eat, let’s pray." },
+      { "who": "me", "es": "Claro.", "en": "Of course." }
+    ] }
+  },
+  {
+    "id": "fe02", "category": "fe", "mission": "family",
+    "es": "Amén.", "en": "Amen.", "say": "ah-MEHN",
+    "note": "Everyone says it together at the end of a prayer.",
+    "scene": { "where": "At the table", "mission": "family", "lines": [
+      { "who": "mom", "es": "Gracias por esta familia. Amén.", "en": "Thank you for this family. Amen." },
+      { "who": "me", "es": "Amén.", "en": "Amen." }
+    ] }
+  },
+  {
+    "id": "fe03", "category": "fe", "mission": "family",
+    "es": "Bendice, Señor, estos alimentos.", "en": "Bless this food, Lord.", "say": "behn-DEE-seh, seh-NYOHR, EHS-tohs ah-lee-MEHN-tohs",
+    "note": "The start of the bendición de la mesa, the grace before meals. People often go on in their own words, then end with “Amén.”",
+    "scene": { "where": "At the table", "mission": "family", "lines": [
+      { "who": "dad", "es": "¿Quién bendice la comida hoy?", "en": "Who’s blessing the food today?" },
+      { "who": "me", "es": "Bendice, Señor, estos alimentos. Amén.", "en": "Bless this food, Lord. Amen." }
+    ] }
+  },
+  {
+    "id": "fe04", "category": "fe", "mission": "family",
+    "es": "Gracias a Dios.", "en": "Thank God.", "say": "GRAH-syahs ah DYOHS",
+    "note": "Heard all the time in Mexico, for big things and small ones.",
+    "scene": { "where": "Arriving at the house", "mission": "family", "lines": [
+      { "who": "mom", "es": "¿Llegaron bien?", "en": "Did you all get here okay?" },
+      { "who": "me", "es": "Sí, gracias a Dios.", "en": "Yes, thank God." }
+    ] }
+  },
+  {
+    "id": "fe05", "category": "fe", "mission": "family",
+    "es": "Si Dios quiere.", "en": "God willing.", "say": "see DYOHS KYEH-reh",
+    "note": "Added to plans: “Nos vemos el domingo, si Dios quiere.”",
+    "scene": { "where": "Saying goodbye", "mission": "family", "lines": [
+      { "who": "dad", "es": "¿Nos vemos el domingo?", "en": "See you Sunday?" },
+      { "who": "me", "es": "Sí, si Dios quiere.", "en": "Yes, God willing." }
+    ] }
+  },
+  {
+    "id": "fe06", "category": "fe", "mission": "family",
+    "es": "Dios te bendiga.", "en": "God bless you.", "say": "DYOHS teh behn-DEE-gah",
+    "reg": "tu",
+    "note": "Te is for tú: use it with {sibling} or anyone younger. With {mom} and {dad}, say “Dios lo bendiga” to him and “Dios la bendiga” to her.",
+    "scene": { "where": "Saying goodbye", "mission": "family", "lines": [
+      { "who": "sibling", "es": "¡Hasta luego!", "en": "See you later!" },
+      { "who": "me", "es": "Hasta luego. Dios te bendiga.", "en": "See you later. God bless you." }
+    ] }
+  },
+  {
+    "id": "fe07", "category": "fe", "mission": "family",
+    "es": "Padre nuestro, que estás en el cielo.", "en": "Our Father, who art in heaven.", "say": "PAH-dreh NWEHS-troh, keh ehs-TAHS ehn ehl SYEH-loh",
+    "note": "The Padre Nuestro, one line a day. You speak to God with tú (estás), like family.",
+    "scene": { "where": "Praying together", "mission": "family", "lines": [
+      { "who": "mom", "es": "Vamos a rezar el Padre Nuestro.", "en": "Let’s pray the Our Father." },
+      { "who": "me", "es": "Padre nuestro, que estás en el cielo.", "en": "Our Father, who art in heaven." }
+    ] }
+  },
+  {
+    "id": "fe08", "category": "fe", "mission": "family",
+    "es": "Santificado sea tu nombre.", "en": "Hallowed be thy name.", "say": "sahn-tee-fee-KAH-doh SEH-ah too NOHM-breh",
+    "note": "Santificado = honored as holy.",
+    "scene": { "where": "Praying together", "mission": "family", "lines": [
+      { "who": "mom", "es": "Padre nuestro, que estás en el cielo.", "en": "Our Father, who art in heaven." },
+      { "who": "me", "es": "Santificado sea tu nombre.", "en": "Hallowed be thy name." }
+    ] }
+  },
+  {
+    "id": "fe09", "category": "fe", "mission": "family",
+    "es": "Venga a nosotros tu reino.", "en": "Thy kingdom come.", "say": "BEHN-gah ah noh-SOH-trohs too RAY-noh",
+    "note": "Literally “may your kingdom come to us.”",
+    "scene": { "where": "Praying together", "mission": "family", "lines": [
+      { "who": "dad", "es": "Santificado sea tu nombre.", "en": "Hallowed be thy name." },
+      { "who": "me", "es": "Venga a nosotros tu reino.", "en": "Thy kingdom come." }
+    ] }
+  },
+  {
+    "id": "fe10", "category": "fe", "mission": "family",
+    "es": "Hágase tu voluntad en la tierra como en el cielo.", "en": "Thy will be done on earth as it is in heaven.", "say": "AH-gah-seh too boh-loon-TAHD ehn lah TYEH-rrah KOH-moh ehn ehl SYEH-loh",
+    "scene": { "where": "Praying together", "mission": "family", "lines": [
+      { "who": "mom", "es": "Venga a nosotros tu reino.", "en": "Thy kingdom come." },
+      { "who": "me", "es": "Hágase tu voluntad en la tierra como en el cielo.", "en": "Thy will be done on earth as it is in heaven." }
+    ] }
+  },
+  {
+    "id": "fe11", "category": "fe", "mission": "family",
+    "es": "Danos hoy nuestro pan de cada día.", "en": "Give us this day our daily bread.", "say": "DAH-nohs oy NWEHS-troh pahn deh KAH-dah DEE-ah",
+    "note": "Pan de cada día = bread of each day.",
+    "scene": { "where": "Praying together", "mission": "family", "lines": [
+      { "who": "dad", "es": "Hágase tu voluntad en la tierra como en el cielo.", "en": "Thy will be done on earth as it is in heaven." },
+      { "who": "me", "es": "Danos hoy nuestro pan de cada día.", "en": "Give us this day our daily bread." }
+    ] }
+  },
+  {
+    "id": "fe12", "category": "fe", "mission": "family",
+    "es": "Perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden.", "en": "Forgive us our trespasses, as we forgive those who trespass against us.", "say": "pehr-DOH-nah NWEHS-trahs oh-FEHN-sahs, KOH-moh tahm-BYEHN noh-SOH-trohs pehr-doh-NAH-mohs ah lohs keh nohs oh-FEHN-dehn",
+    "note": "The longest line. Say it in two breaths: up to “ofensas,” then the rest.",
+    "scene": { "where": "Praying together", "mission": "family", "lines": [
+      { "who": "mom", "es": "Danos hoy nuestro pan de cada día.", "en": "Give us this day our daily bread." },
+      { "who": "me", "es": "Perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden.", "en": "Forgive us our trespasses, as we forgive those who trespass against us." }
+    ] }
+  },
+  {
+    "id": "fe13", "category": "fe", "mission": "family",
+    "es": "No nos dejes caer en la tentación, y líbranos del mal. Amén.", "en": "Lead us not into temptation, but deliver us from evil. Amen.", "say": "noh nohs DEH-hehs kah-EHR ehn lah tehn-tah-SYOHN, ee LEE-brah-nohs dehl MAHL. ah-MEHN",
+    "note": "Literally “don’t let us fall into temptation, and free us from evil.” Some people say “caer en tentación,” without “la.”",
+    "scene": { "where": "Praying together", "mission": "family", "lines": [
+      { "who": "dad", "es": "Perdona nuestras ofensas, como también nosotros perdonamos a los que nos ofenden.", "en": "Forgive us our trespasses, as we forgive those who trespass against us." },
+      { "who": "me", "es": "No nos dejes caer en la tentación, y líbranos del mal. Amén.", "en": "Lead us not into temptation, but deliver us from evil. Amen." }
+    ] }
   }
 ]
